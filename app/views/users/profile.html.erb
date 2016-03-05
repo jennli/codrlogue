@@ -1,16 +1,19 @@
 <h1>Edit Profile</h1>
 
+<%# Remove Integration %>
+<%# Stub from User controller %>
 <% @user = User.find 1 %>
+<% @skill = Skill.new %>
+<%# End Stub %>
 
-<%= simple_form_for @user do |f| %>
-
-<div class="form-group">
-  <%= f.input :skills %>
+<h2>Skills</h2>
+<div class="skills">
+  <% @user.skills.each do |ans| %>
+    <%# becareful of the folder %>
+    <%= render '/skills/skill', skill: ans %>
+  <% end %>
 </div>
-<div class="form-group">
-  <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+<h3>Create an skill</h3>
+<div id="skill-form">
+  <%= render 'skills/form' %>
 </div>
-<div class="form-group">
-  <%= f.submit class: "btn btn-primary btn-sm" %>
-</div>
-<% end %>

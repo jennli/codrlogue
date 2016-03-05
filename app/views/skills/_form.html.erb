@@ -1,0 +1,15 @@
+<%= simple_form_for @user do |f| %>
+
+<div class="form-group">
+  <%= f.input :title %>
+</div>
+<div class="form-group">
+  <%= f.input :rating %>
+</div>
+<div class="form-group">
+  <%= f.association :category, as: :select %>
+</div>
+<div class="form-group">
+  <%= f.submit class: "btn btn-primary btn-sm" %>
+</div>
+<% end %>

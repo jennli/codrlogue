@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :educations
   resources :skills
   resources :categories
-  resources :users
+  resources :users do
+    
+  end
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do

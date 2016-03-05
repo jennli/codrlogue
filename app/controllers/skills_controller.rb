@@ -23,10 +23,9 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
     @skill.user = current_user
     respond_to do |format|
       if @skill.save
-        format.json { render json: @skill.to_json }
-
+        format.js { render :skill_create_success }
       else
-        format.json { render json: @skill.errors }
+        format.js { render :skill_create_failure }
       end
     end
   end
@@ -57,6 +56,9 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
   def destory
     @skill.user = current_user
     @skill.destroy
+    respond_to do |format|
+      format.json { render :skill_destroy }
+    end
   end
 
   private
