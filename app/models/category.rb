@@ -11,5 +11,6 @@
 class Category < ActiveRecord::Base
   has_many :skills, dependent: :nullify
 
-  validates :name, presence: true
+  VALID_CATEGORY_NAMES = %w(Lanuages Tools People)
+  validates :name, presence: true, inclusion: { within: VALID_CATEGORY_NAMES }
 end

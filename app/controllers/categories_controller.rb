@@ -21,9 +21,9 @@ class CategoriesController < ApplicationController
     @categorie.user = current_user
     respond_to do |format|
       if @categorie.save
-        format.json { json: @categorie.to_json }
+        format.json { render json: @categorie.to_json }
       else
-        format.json { json: @categorie.errors }
+        format.json { render json: @categorie.errors }
       end
     end
   end
@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json { json: @categorie.to_json }
+      format.json { render json: @categorie.to_json }
     end
   end
 
@@ -44,9 +44,9 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @categorie.update categorie_params
-        format.json { json: @categorie.to_json }
+        format.json { render json: @categorie.to_json }
       else
-        format.json { json: @categorie.errors }
+        format.json { render json: @categorie.errors }
       end
     end
   end

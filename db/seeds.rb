@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+CategoriesController::VALID_CATEGORY_NAMES.each do |cat|
+  Category.create(name: cat)
+end
