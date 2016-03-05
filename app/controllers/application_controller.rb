@@ -31,6 +31,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :has_unread_messages?
 
+  def get_admin_random_string
+    (0...50).map { ('a'..'z').to_a[rand(26)] }.join
+  end
+
+  helper_method :get_admin_random_string
+
   #   rescue_from ActiveRecord::RecordNotFound do
   #   flash[:warning] = 'Resource not found.'
   #   redirect_back_or root_path
