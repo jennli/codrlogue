@@ -9,5 +9,7 @@
 #
 
 class Category < ActiveRecord::Base
-  has_many :skills, dependent: :nullify 
+  has_many :skills, dependent: :nullify
+
+  validates :name, presence: true
 end
