@@ -17,12 +17,13 @@ class CompaniesController < ApplicationController
 
   before_action :authenticate_user, except: [:index, :show]
 
-  def index
-    @companies = Company.all
-    ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
-    @employments = Employment.where("priv_snippet=?", false)
-    ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
-  end
+  # Index for companies not needed. Company information only applies to User/Student show page
+  # def index
+  #   @companies = Company.all
+  #   ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
+  #   @employments = Employment.where("priv_snippet=?", false)
+  #   ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
+  # end
 
   def show
     ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
