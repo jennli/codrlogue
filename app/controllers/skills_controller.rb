@@ -12,18 +12,59 @@
 #
 
 class SkillsController < ApplicationController
+before_action :find_skill, only: [:show, :edit, :update, :destroy]
+
   def new
+    @skill = Skill.new
   end
+
   def create
+    @skill = Skill.new skill_params
+    @skill.user = current_user
+    respond_to do |format|
+      if @skill.save
+        format.json { json: @skill.to_json }
+      else
+        format.json { json: @skill.errors }
+      end
+    end
   end
+
   def index
+    @skills = current_user.skills
   end
+
   def show
+    respond_to do |format|
+      format.json { json: @skill.to_json }
+    end
   end
+
   def edit
   end
+
   def update
+    respond_to do |format|
+      if @skill.update skill_params
+        format.json { json: @skill.to_json }
+      else
+        format.json { json: @skill.errors }
+      end
+    end
   end
+
   def destory
+    @skill.user = current_user
+    @skill.destroy
+  end
+
+  private
+
+  def find_skill
+    @skill = Skill.find params[:id]
+  end
+
+  def skill_params
+    params.require(:skill).permit(:title, :rating, :category_id)
   end
 end
