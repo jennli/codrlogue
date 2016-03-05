@@ -82,6 +82,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def contact
+
+  end
+
   private
 
   def user_params
