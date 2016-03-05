@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   before_action :find_user, except: [:create, :index, :new]
 
   def index
-    @users =  User.where('is_available = true').order('created_at DESC').page(params[:page])
+    @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
 
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       login(@user)
-      redirect_to root_path, notice: "Account created!"
+      redirect_to root_path, notice: "Thanks for registering. You will be notified when your account is approved"
     else
       flash[:alert] = "Error creating user. see error below"
       render :new
