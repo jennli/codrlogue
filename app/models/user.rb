@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
   uniqueness: true,
   format: /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
+# pagination per page limit
+  self.per_page = 10
+
   def full_name
     "#{first_name} #{last_name}"
   end
