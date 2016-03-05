@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     get :work_profile, on: :member
   end
 
+  get "users/:id/contact" => "emails#show", as: :user_contact
+  post "users/:id/contact" => "emails#send_email", as: :user_contact_send
+  # get "users/:id/contact" => "emails#show", as: :user_email
+  # post "users/:id/contact" => "emails#send"
+
   get 'users/admin/:admin_random_string' => 'users#index', as: :admin
 
   resources :conversations, only: [:index, :show, :destroy] do

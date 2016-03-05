@@ -24,3 +24,4 @@
     <% if can? :manage, @user %>
     <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-info"  %>
     <% end %>
+    <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
