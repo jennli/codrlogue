@@ -1,0 +1,20 @@
+<div class='container'>
+
+  <% page_header "Your Conversations" %>
+
+  <div class='container'>
+    <%= link_to 'Start conversation', new_message_path, class: 'btn btn-sm btn-primary' %>
+    <%= mailbox_section 'inbox', @box, class: 'btn btn-sm btn-default' %>
+    <%= mailbox_section 'sent', @box,class: 'btn btn-sm btn-default' %>
+    <%= mailbox_section 'trash', @box,class: 'btn btn-sm btn-default' %>
+  </div>
+<br />
+
+  <ul class="list-group">
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </ul>
+
+  <%= will_paginate %>
+
+
+</div>
