@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :users
 
+  get 'users/admin/:admin_random_string' => 'users#index', as: :admin
+
   resources :conversations, only: [:index, :show, :destroy] do
     member do
       post :reply
