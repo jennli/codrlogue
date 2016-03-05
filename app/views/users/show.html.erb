@@ -4,10 +4,10 @@
   <div class="panel panel-info">
     <div class="panel-heading">Profile</div>
       <div class="panel-body">
-        <p>Email: <br> <%= @user.email %></p>
-        <p>Summary: <br> <%= @user.summary %></p>
-        <p>Description: <br> <%= @user.description %></p>
-        <p>Available? <br> <%= @user.is_available %></p>
+        <p><strong>Email</strong> <br> <%= @user.email %></p>
+        <p><strong>Summary</strong> <br> <%= @user.summary %></p>
+        <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
+        <p><strong>Available?</strong> <br> <%= @user.is_available %></p>
       </div>
     </div>
 
