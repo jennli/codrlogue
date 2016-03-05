@@ -41,6 +41,10 @@ gem 'quiet_assets'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cowsay'
+
+# Annotate to add comments about schema 
+gem 'annotate'
+
 # Use ActiveModel has_secure_password
 
 # Use Unicorn as the app server
