@@ -26,11 +26,18 @@
           <li><%= link_to "SIGN OUT", sessions_path, method: :delete %></li>
           <li><%= link_to has_unread_messages?? (fa_icon('envelope') + " new msg!") : fa_icon('envelope'), conversations_path %>
           </li>
+
           <% else %>
           <li><%= link_to "NEW USER", new_user_path %></li>
           <li><%= link_to "LOG IN", new_session_path %></li>
           <% end %>
         </ul>
+
+        <% if user_signed_in? && current_user.admin %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Administrator", admin_path(get_admin_random_string) %></li>
+        </ul>
+        <% end %>
       </div>
     </div>
   </nav>

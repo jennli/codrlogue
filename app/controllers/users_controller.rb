@@ -19,7 +19,16 @@ class UsersController < ApplicationController
   before_action :find_user, except: [:create, :index, :new]
 
   def index
-    @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
+    if params[:admin_random_string]
+      if current_user.admin
+        @users = User.all.order('created_at DESC').page(params[:page])
+        render :admin
+      else
+        redirect_to root_path, alert:'access denied'
+      end
+    else
+      @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
+    end
 
   end
 
@@ -49,7 +58,13 @@ class UsersController < ApplicationController
   def update
     @user.slug = nil
     if @user.update user_params
-      redirect_to @user, notice: "update successfully"
+      if user_params.has_key?(:approved) || user_params.has_key?(:admin)
+      flash[:notice] = "Update success from Administrator"
+      @users = User.all.order('created_at DESC').page(params[:page])
+      redirect_to admin_path(get_admin_random_string)
+      else
+        redirect_to @user, notice: "update successfully"
+      end
     else
       render :edit
     end
@@ -70,7 +85,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :summary, :description, :is_available)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :summary, :description, :is_available, :approved, :admin)
   end
 
   def find_user
