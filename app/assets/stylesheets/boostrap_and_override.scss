@@ -1,2 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.page-header h1{
+  text-align: center;
+}
+
+.fa{
+  font-size: 20px !important;
+}
+
+.last_message{
+  background-color: beige;
+}

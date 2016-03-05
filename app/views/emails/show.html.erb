@@ -1,0 +1,13 @@
+<div class="container">
+  <%= form_tag user_contact_send_path do %>
+    <div>
+      <%= label_tag :email %>
+      <%= email_field_tag :email %>
+    </div>
+    <div>
+      <%= label_tag :body %>
+      <%= text_area_tag :body %>
+    </div>
+    <%= submit_tag "Email" %>
+  <% end %>
+</div>

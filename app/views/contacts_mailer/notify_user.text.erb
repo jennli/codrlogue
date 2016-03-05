@@ -1,11 +1,11 @@
-Hello <%= @post.user.full_name %>,
+Hello <%= @user.full_name %>,
 
-Sombody commented on your post!
+A potential employer wants to get in touch with you!
 
- Post title: <%= @post.title %>
+Employer email: <%= @employer_info[:email] %>
 
-The Comment: <%= @comment.body %>
+Message 
 
-<%= link_to "Click here to view the question", post_url(@post) %>
+<%= @employer_info[:body] %>
 
 Regards
