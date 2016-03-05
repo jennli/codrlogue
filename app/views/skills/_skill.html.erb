@@ -1,0 +1,12 @@
+<div id="<%= dom_id(skill) %>">
+  <%= skill.title %>
+  <%= skill.rating %>
+  <%= skill.category.name %>
+  <% if can? :destroy, skill %>
+  <%= link_to "Delete", user_skill_path(@user, skill),
+                        method: :delete,
+                        remote: true,
+                        data: {confirm: "Are you sure?"} %>
+  <% end %>
+  <hr>
+</div>

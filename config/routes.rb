@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :educations
   resources :skills
   resources :categories
-  resources :users 
+  resources :users do
+    # users/1/profile
+    get :work_profile, on: :member
+  end
 
   get "users/:id/contact" => "emails#show", as: :user_contact
   post "users/:id/contact" => "emails#send_email", as: :user_contact_send

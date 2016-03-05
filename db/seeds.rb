@@ -5,7 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-  default_password= "123456"
+Category::VALID_CATEGORY_NAMES.each do |cat|
+  Category.create(name: cat)
+end
+
+default_password= "123456"
 
 20.times do
   q = User.create first_name:Faker::Name.first_name,
