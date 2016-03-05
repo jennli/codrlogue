@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
 
   def update
 
-  def
+  end
 
   def destroy
 
