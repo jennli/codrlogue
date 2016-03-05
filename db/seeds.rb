@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+  default_password= "123456"
+
+20.times do
+  q = User.create first_name:Faker::Name.first_name,
+                   last_name:Faker::Name.last_name,
+                       email:Faker::Internet.email,
+                      summary:Faker::Lorem.sentence,
+                      password: default_password,
+                      password_confirmation:default_password,
+                      description:Faker::Lorem.paragraph,
+                      is_available:Faker::Boolean.boolean,
+                      approved:Faker::Boolean.boolean,
+                      admin: false
+end
