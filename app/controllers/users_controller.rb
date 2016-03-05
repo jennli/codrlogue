@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.slug = nil
     if @user.update user_params
       redirect_to @user, notice: "update successfully"
     else
@@ -72,7 +73,7 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = User.find params[:id]
+    @user = User.friendly.find params[:id]
   end
 
 end
