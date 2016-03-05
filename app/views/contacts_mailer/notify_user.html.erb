@@ -1,0 +1,12 @@
+<p>Hello <%= @post.user.full_name %>,</p>
+
+<p>Sombody commented on your post!</p>
+
+<p> Post title: <%= @post.title %></p>
+
+<p>The Comment: <%= @comment.body %></p>
+
+<%= link_to "Click here to view the question", post_url(@post) %>
+
+<p>Regards</p>
+
