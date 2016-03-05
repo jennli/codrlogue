@@ -11,61 +11,53 @@
 
 class CompaniesController < ApplicationController
 
-  ##################### RENAME/REMOVE THIS ###############
-  before_action :set_company, only: [:show, :library_show]
-  ##################### RENAME/REMOVE THIS ###############
+  before_action :find_company, only: [:update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
-  before_action :authenticate_user, except: [:index, :show]
+  ### Companies are created, updated, and destroyed here. ###
 
-  # Index for companies not needed. Company information only applies to User/Student show page
-  # def index
-  #   @companies = Company.all
-  #   ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
-  #   @employments = Employment.where("priv_snippet=?", false)
-  #   ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
-  # end
-
-
-  def show
-    ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
-    @employments = Employment.where("company_id=? AND priv_snippet=?", params[:id], false)
-    ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
-  end
-
-  def new # A way for the user to add new companies
-    @company = Company.new
-  end
-
-  def create # Action to create new companies
-    @company = Company.new company_params
-    if @company.save
-      redirect_to root_path, notice: "New company added"
-    else
-      render :new
+  def create
+    @company = Company.new(company_params)
+    @company.user = current_user
+    respond_to do |format|
+      if @company.save
+        format.js { render :company_create_success }
+      else
+        format.js { render :company_create_failure}
+      end
     end
   end
-  ##################### RENAME/REMOVE THIS ###############
-  def library_index
-  ##################### RENAME/REMOVE THIS ###############
-    @companies = Company.all
+
+  def update
+    respond_to do |format|
+      if @company.update(company_params)
+        format.js { render :company_update_success }
+      else
+        format.js { render :company_update_failure}
+      end
+    end
   end
 
-  ##################### RENAME/REMOVE THIS ###############
-  def library_show
-  ##################### RENAME/REMOVE THIS ###############
-    @employments = Employment.where("company_id=? AND user_id=?", params[:id], current_user)
+  def destroy
+    @company.destroy
+    respond_to do |format|
+      format.js { render :company_destroy }
+    end
   end
 
   private
+    def find_company
+      @company = Company.find(params[:id])
+    end
 
-  def set_company
-    @company = Company.find(params[:id])
+    def company_params
+      params.require(:company).permit(:name, :link)
+    end
+
+    def authorize_user
+      unless can? :manage, @company
+        redirect_to root_path , alert: "Access Denied"
+      end
+    end
+
   end
-
-  def company_params
-    ##################### CHECK THIS ###############
-    params.require(:company).permit(:name, :link)
-    ##################### CHECK THIS ###############
-  end
-
-end

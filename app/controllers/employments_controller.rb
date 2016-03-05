@@ -15,54 +15,45 @@
 #
 
 class EmploymentsController < ApplicationController
-  before_action :set_employment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user, except: [:index, :show]
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :find_employment, only: [:update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
-  def index
-    @employments = Employment.all
-  end
-
-  def show
-  end
-
-  def new
-    @employment = Employment.new
-  end
-
-  def edit
-  end
+  ### Employments are created, updated, and destroyed here. ###
 
   def create
     @employment = Employment.new(employment_params)
     @employment.user = current_user
-    if @employment.save
-      redirect_to @employment, notice: 'Employment was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @employment.save
+        format.js { render :employment_create_success }
+      else
+        format.js { render :employment_create_failure}
+      end
     end
   end
 
   def update
-    if @employment.update(employment_params)
-      redirect_to @employment, notice: 'Employment was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @employment.update(employment_params)
+        format.js { render :employment_update_success }
+      else
+        format.js { render :employment_update_failure}
+      end
     end
   end
 
   def destroy
     @employment.destroy
-    redirect_to root_path, notice: 'Employment was successfully destroyed.'
+    respond_to do |format|
+      format.js { render :employment_destroy }
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_snippet
+    def find_employment
       @employment = Employment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def employment_params
       params.require(:employment).permit(
         :job_title,
