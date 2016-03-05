@@ -9,29 +9,57 @@
 #
 
 class CategoriesController < ApplicationController
+  # User authetication
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def new
-
+    @categorie = Category.new
   end
 
   def create
+    @categorie = Category.new categorie_params
+    @categorie.user = current_user
+    respond_to do |format|
+      if @categorie.save
+        format.json { json: @categorie.to_json }
+      else
+        format.json { json: @categorie.errors }
+      end
+    end
+  end
 
+  def index
+    @categories = current_user.categories
   end
 
   def show
-
+    respond_to do |format|
+      format.json { json: @categorie.to_json }
+    end
   end
 
   def edit
-
   end
 
   def update
-
+    respond_to do |format|
+      if @categorie.update categorie_params
+        format.json { json: @categorie.to_json }
+      else
+        format.json { json: @categorie.errors }
+      end
+    end
   end
 
-  def destroy
+  def destory
+    @categorie.user = current_user
+    @categorie.destroy
+  end
 
+  private
+
+  def set_category
+    @category = Category.find params[:id]
   end
 
 end
