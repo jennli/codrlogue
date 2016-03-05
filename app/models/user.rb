@@ -17,6 +17,9 @@
 
 class User < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :full_name, use: [:slugged, :history]
+
   has_many :skills, dependent: :destroy
   has_many :employments, dependent: :destroy
   has_many :educations, dependent: :destroy
@@ -32,6 +35,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
   uniqueness: true,
   format: /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+# pagination per page limit
+  self.per_page = 10
 
   def full_name
     "#{first_name} #{last_name}"

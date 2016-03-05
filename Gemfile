@@ -41,8 +41,10 @@ gem 'quiet_assets'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cowsay'
+gem 'coderay'
+gem 'redcarpet', '~> 3.0.0'
 
-# Annotate to add comments about schema 
+# Annotate to add comments about schema
 gem 'annotate'
 
 # Use ActiveModel has_secure_password

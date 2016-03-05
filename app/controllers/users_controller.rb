@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   before_action :find_user, except: [:create, :index, :new]
 
   def index
-    @users = User.all
+    @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
+
   end
 
   def new
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       login(@user)
-      redirect_to root_path, notice: "Account created!"
+      redirect_to root_path, notice: "Thanks for registering. You will be notified when your account is approved"
     else
       flash[:alert] = "Error creating user. see error below"
       render :new
@@ -46,6 +47,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.slug = nil
     if @user.update user_params
       redirect_to @user, notice: "update successfully"
     else
@@ -68,11 +70,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :summary, :description, :is_available)
   end
 
   def find_user
-    @user = User.find params[:id]
+    @user = User.friendly.find params[:id]
   end
 
 end
