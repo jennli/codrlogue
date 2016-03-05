@@ -1,24 +1,61 @@
 class UsersController < ApplicationController
-
-  def create
-  end
-
-  def update
-  end
-
-  def show
-  end
-
-  def destroy
-  end
+  before_action :find_user, except: [:create, :index, :new]
 
   def index
+    @users = User.all
   end
 
   def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new user_params
+    if @user.save
+      login(@user)
+      redirect_to root_path, notice: "Account created!"
+    else
+      flash[:alert] = "Error creating user. see error below"
+      render :new
+    end
+  end
+
+  def show
+
   end
 
   def edit
+
   end
-  
+
+  def update
+    if @user.update user_params
+      redirect_to @user, notice: "update successfully"
+    else
+      render :edit
+    end
+  end
+
+  def edit_password
+  end
+
+  def update_password
+    if @user.authenticate(params[:user][:old_password]) && (@user.update user_params)
+      redirect_to @user, notice: "password update successfully"
+    else
+      flash[:alert]="Invalid. Please try again."
+      render :edit_password
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def find_user
+    @user = User.find params[:id]
+  end
+
 end
