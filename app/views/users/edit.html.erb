@@ -2,12 +2,9 @@
 
   <h1 class="title">Edit User Profile</h1>
   <%= render "form" %>
-  
+
   <div>
-
-    <%= link_to "Cancel", user_path(@user), class:"btn btn-default btn-sm"%>
-    <%= link_to "Change password", user_password_path(@user), class:"btn btn-danger btn-sm"%>
-
+    <%= link_to "Change password", user_password_path(@user)%>
   </div>
 
 </div>
