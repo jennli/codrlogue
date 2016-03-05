@@ -41,8 +41,6 @@ gem 'quiet_assets'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cowsay'
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
 # Use ActiveModel has_secure_password
 
 # Use Unicorn as the app server
