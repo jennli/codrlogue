@@ -5,7 +5,22 @@ Rails.application.routes.draw do
   resources :educations
   resources :skills
   resources :categories
-  resources :users
+  resources :users 
+
+  get "users/:id/contact" => "emails#show", as: :user_contact
+  post "users/:id/contact" => "emails#send_email", as: :user_contact_send
+  # get "users/:id/contact" => "emails#show", as: :user_email
+  # post "users/:id/contact" => "emails#send"
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+  end
+
+  resources :messages, only: [:new, :create]
   get "users/:id/password" => "users#edit_password", as: :user_password
   patch "users/:id/password" => "users#update_password"
   resources :sessions, only: [:new, :create] do

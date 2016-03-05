@@ -1,10 +1,9 @@
 class ContactsMailer < ApplicationMailer
 
-  def notify_user(user)
+  def notify_user(employer_info, user)
     @user = user
-    # Get the params from stuff
-    #@employer = params.require(:user).permit(:email, :body)
-    mail(to: @user.email, subject: "An employer wants to get in touch with you")
+    @employer_info = employer_info
+    mail(to: @user.email, subject: "An employer wants to get in touch with you!")
   end
 
 end

@@ -32,11 +32,19 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6}, on: :create
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :description, presence: true
   validates :email, presence: true,
   uniqueness: true,
   format: /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-# pagination per page limit
+  # mail boxer setting
+  acts_as_messageable
+
+  def mailboxer_email(object)
+    email
+  end
+
+  # pagination per page limit
   self.per_page = 10
 
   def full_name

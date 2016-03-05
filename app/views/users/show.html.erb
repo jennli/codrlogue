@@ -1,5 +1,6 @@
 <div class="container">
-  <h3><%= @user.full_name %></h3>
+
+  <% page_header @user.full_name %>
 
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -23,3 +24,4 @@
     <% if can? :manage, @user %>
     <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-info"  %>
     <% end %>
+    <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
