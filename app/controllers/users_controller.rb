@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   before_action :find_user, except: [:create, :index, :new]
 
   def index
-    @users =  User.where('is_available = true')
+    @users =  User.where('is_available = true').order('created_at DESC').page(params[:page])
+
   end
 
   def new
