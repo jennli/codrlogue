@@ -23,9 +23,10 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
     @skill.user = current_user
     respond_to do |format|
       if @skill.save
-        format.json { json: @skill.to_json }
+        format.json { render json: @skill.to_json }
+
       else
-        format.json { json: @skill.errors }
+        format.json { render json: @skill.errors }
       end
     end
   end
@@ -36,7 +37,7 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
 
   def show
     respond_to do |format|
-      format.json { json: @skill.to_json }
+      format.json { render json: @skill.to_json }
     end
   end
 
@@ -46,9 +47,9 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
   def update
     respond_to do |format|
       if @skill.update skill_params
-        format.json { json: @skill.to_json }
+        format.json { render json: @skill.to_json }
       else
-        format.json { json: @skill.errors }
+        format.json { render json: @skill.errors }
       end
     end
   end
