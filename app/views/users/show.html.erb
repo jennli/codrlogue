@@ -3,14 +3,20 @@
 
   <div class="panel panel-info">
     <div class="panel-heading">Profile</div>
-      <div class="panel-body">
-        <p><strong>Email</strong> <br> <%= @user.email %></p>
-        <p><strong>Summary</strong> <br> <%= @user.summary %></p>
-        <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
-        <p><strong>Available?</strong> <br> <%= @user.is_available %></p>
-      </div>
+    <div class="panel-body">
+      <p><strong>Email</strong> <br> <%= @user.email %></p>
+      <p><strong>Summary</strong> <br> <%= @user.summary %></p>
+      <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
+      <p><strong>Availability</strong> <br>
+        <% if @user.is_available%>
+        Available for recruiting
+        <% else %>
+        Not available for recruiting
+        <% end %>
+      </p>
     </div>
+  </div>
 
-      <% if can? :manage, @user %>
-      <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-info"  %>
-      <% end %>
+  <% if can? :manage, @user %>
+  <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-info"  %>
+  <% end %>
