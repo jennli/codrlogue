@@ -1,0 +1,27 @@
+<div class='container'>
+
+  <% page_header "Pending Accounts" %>
+
+  <% @users.each do |u| %>
+  <div class='well'>
+    <%= link_to u.full_name, u %>
+    <% if u.admin %>
+    <span class="badge">Administrator</span>
+    <% end %>
+    <% if u.approved && !u.admin %>
+    <%= link_to "Set as admin", user_path(u, user: {admin: true}), method: :patch, class: "btn btn-warning btn-sm" %>
+    <%= link_to "Disable account", user_path(u, user: {approved: false}), method: :patch, class: "btn btn-danger btn-sm approve-btn" %>
+    <% elsif u.approved == nil || u.approved == false  %>
+    <%= link_to "Approve account", user_path(u, user: {approved: true}), method: :patch, class: "btn btn-primary btn-sm approve-btn" %>
+    <% elsif current_user.admin && u != current_user %>
+    <%= link_to "Remove admin", user_path(u, user: {admin: false, }), method: :patch, class: "btn btn-warning btn-sm" %>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @users %>
+    </div>
+    <%= will_paginate @users, :container => false %>
+  </div>
