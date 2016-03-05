@@ -18,4 +18,26 @@ class ApplicationController < ActionController::Base
   def login(user)
     session[:user_id] = user.id
   end
+
+  def check_if_user_signed_in
+    if !user_signed_in?
+      redirect_to new_session_path
+    end
+  end
+
+  def has_unread_messages?
+    current_user.mailbox.inbox(unread: true).length > 0
+  end
+
+  helper_method :has_unread_messages?
+
+  #   rescue_from ActiveRecord::RecordNotFound do
+  #   flash[:warning] = 'Resource not found.'
+  #   redirect_back_or root_path
+  # end
+  #
+  # def redirect_back_or(path)
+  #   redirect_to request.referer || path
+  # end
+
 end

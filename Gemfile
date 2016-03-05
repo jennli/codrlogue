@@ -43,6 +43,10 @@ gem 'mini_magick'
 gem 'cowsay'
 gem 'coderay'
 gem 'redcarpet', '~> 3.0.0'
+gem "mailboxer"
+gem 'gravatar_image_tag'
+gem 'jquery-turbolinks'
+gem 'chosen-rails'
 
 # Annotate to add comments about schema
 gem 'annotate'

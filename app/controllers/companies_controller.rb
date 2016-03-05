@@ -25,6 +25,7 @@ class CompaniesController < ApplicationController
   #   ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
   # end
 
+
   def show
     ###################### UPDATE ACTIVERECORD SEARCH CRITERIA ######################
     @employments = Employment.where("company_id=? AND priv_snippet=?", params[:id], false)
