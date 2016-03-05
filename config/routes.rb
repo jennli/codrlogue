@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :users do
     # users/1/profile
-    get :profile, on: :member
+    get :work_profile, on: :member
   end
 
   resources :conversations, only: [:index, :show, :destroy] do

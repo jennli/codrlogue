@@ -16,7 +16,7 @@
 #
 
 class UsersController < ApplicationController
-  before_action :find_user, except: [:create, :index, :new, :profile]
+  before_action :find_user, except: [:create, :index, :new]
 
   def index
     @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
@@ -67,8 +67,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def profile
-    render :profile
+  def work_profile
+    @skill = Skill.new
+
+    render :work_profile
   end
 
   private
