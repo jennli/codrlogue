@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get :work_profile, on: :member
   end
 
+  get 'users/admin/:admin_random_string' => 'users#index', as: :admin
+
   resources :conversations, only: [:index, :show, :destroy] do
     member do
       post :reply
