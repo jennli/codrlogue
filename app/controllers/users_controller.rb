@@ -16,7 +16,7 @@
 #
 
 class UsersController < ApplicationController
-  before_action :find_user, except: [:create, :index, :new]
+  before_action :find_user, except: [:create, :index, :new, :profile]
 
   def index
     @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
@@ -65,6 +65,10 @@ class UsersController < ApplicationController
       flash[:alert]="Invalid. Please try again."
       render :edit_password
     end
+  end
+
+  def profile
+    render :profile
   end
 
   private
