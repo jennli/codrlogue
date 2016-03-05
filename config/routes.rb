@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :skills
   resources :categories
   resources :users
-
+  get "users/:id/password" => "users#edit_password", as: :user_password
+  patch "users/:id/password" => "users#update_password"
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'users#index'
+  root 'users#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
