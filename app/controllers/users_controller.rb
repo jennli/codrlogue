@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   before_action :find_user, except: [:create, :index, :new]
 
   def index
-    @users = User.all
+    @users =  User.where('is_available = true')
   end
 
   def new
