@@ -11,3 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
+/app_keys.rb
+.DS_Store

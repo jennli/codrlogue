@@ -87,6 +87,9 @@ class UsersController < ApplicationController
 
     render :work_profile
   end
+  def contact
+
+  end
 
   private
 
