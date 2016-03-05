@@ -6,6 +6,16 @@ Rails.application.routes.draw do
   resources :skills
   resources :categories
   resources :users
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+  end
+
+  resources :messages, only: [:new, :create]
   get "users/:id/password" => "users#edit_password", as: :user_password
   patch "users/:id/password" => "users#update_password"
   resources :sessions, only: [:new, :create] do

@@ -24,6 +24,8 @@
           <% if user_signed_in? %>
           <li><%= link_to "#{current_user.full_name}'s Profile", user_path(current_user)%></li>
           <li><%= link_to "SIGN OUT", sessions_path, method: :delete %></li>
+          <li><%= link_to has_unread_messages?? (fa_icon('envelope') + " new msg!") : fa_icon('envelope'), conversations_path %>
+          </li>
           <% else %>
           <li><%= link_to "NEW USER", new_user_path %></li>
           <li><%= link_to "LOG IN", new_session_path %></li>
@@ -33,22 +35,24 @@
     </div>
   </nav>
 
-  <embed class="music" src="audio/Divorce_Papers_-_Arcade_Fire_Her_Soundtrack.mp3" autostart="true" loop="true" hidden="true">
+  <% if notice %>
+  <div class="alert fade in alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4><%= notice %></h4>
+  </div>
 
-    <% if notice %>
-    <div class="alert fade in alert-success">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <h4><%= notice %></h4>
-    </div>
+  <% elsif alert %>
+  <div class="alert fade in alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4><%= alert %></h4>
+  </div>
+  <% end %>
 
-    <% elsif alert %>
-    <div class="alert fade in alert-danger">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <h4><%= alert %></h4>
-    </div>
-    <% end %>
+  <div class="page-header">
+    <h1><%= yield :page_header %></h1>
+  </div>
 
-    <%= yield %>
+  <%= yield %>
 
-  </body>
-  </html>
+</body>
+</html>
