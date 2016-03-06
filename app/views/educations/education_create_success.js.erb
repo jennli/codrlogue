@@ -1,5 +1,5 @@
 $('.educations').prepend('<%= j render "education", education: @education %>');
 
-<% @education = Skill.new %>
+<% @education = Education.new %>
 
 $('#education-form').html('<%= j render "form" %>');
