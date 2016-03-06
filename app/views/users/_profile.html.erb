@@ -1,0 +1,26 @@
+<h1>Profile</h1>
+<div class="container-fluid">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4>Skills</h4>
+    </div>
+    <div class="panel-body">
+      <div class="skills">
+        <% @user.skills.each do |ans| %>
+          <%# becareful of the folder %>
+          <%= render '/skills/skill', skill: ans %>
+        <% end %>
+      </div>
+      <% if can? :manage, @user %>
+        <div id="skill-form">
+          <%= render 'skills/form' %>
+        </div>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
+
+
+

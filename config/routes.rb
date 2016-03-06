@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :users do
     # users/1/profile
-    get :work_profile, on: :member
+    get :profile, on: :member
   end
 
   get "users/:id/contact" => "emails#show", as: :user_contact
