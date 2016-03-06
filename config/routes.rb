@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :employments
+  resources :employments do
+    get :autocomplete_employment_company_name, :on => :collection
+  end
   resources :companies
   resources :projects
   resources :categories
   resources :educations
   resources :skills
-  resources :users do
-  end
+  resources :users
 
   get "users/:id/contact" => "emails#show", as: :user_contact
   post "users/:id/contact" => "emails#send_email", as: :user_contact_send

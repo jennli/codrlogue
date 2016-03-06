@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :educations, dependent: :destroy
   has_many :projects, dependent: :destroy
 
-  has_many :companies, through: :employments
+  # has_many :companies, through: :employments
 
   has_secure_password
 

@@ -15,6 +15,7 @@
 #
 
 class EmploymentsController < ApplicationController
+  autocomplete :employment, :company_name
   before_action :find_employment, only: [:update, :destroy]
   before_action :authorize_user, only: [:update, :destroy]
   before_action :check_if_user_signed_in
@@ -24,8 +25,12 @@ class EmploymentsController < ApplicationController
   def create
     @employment = Employment.new(employment_params)
     @employment.user = current_user
+    # go through the params, see if the company already exists, and if it doesn't create it, then associate the employment with the company
+    #@company = Company.where(name: params.employment.companies.name) || Company.create(name: params.employment.companies.name)
+    #@employment.company = @company
+
     respond_to do |format|
-      if @employment.save
+    if @employment.save
         format.js { render :employment_create_success }
       else
         format.js { render :employment_create_failure}
@@ -63,7 +68,8 @@ class EmploymentsController < ApplicationController
         :end_year,
         :summary,
         :user_id,
-        :company_id
+        :company_name,
+        :company_link
       )
     end
 

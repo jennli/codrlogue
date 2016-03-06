@@ -1,0 +1,10 @@
+<div id="<%= dom_id(company) %>">
+  <%= company.name %>
+  <%= company.link %>
+  <% if can? :destroy, company %>
+  <%= link_to "Delete", company_path(company),
+                        method: :delete,
+                        remote: true,
+                        data: {confirm: "Are you sure?"} %>
+  <% end %>
+</div>
