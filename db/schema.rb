@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160306225808) do
 
   # These are extensions that must be enabled in order to support this database
@@ -165,8 +166,8 @@ ActiveRecord::Schema.define(version: 20160306225808) do
     t.text     "description"
     t.boolean  "admin"
     t.boolean  "is_available"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.boolean  "approved"
     t.string   "slug"
     t.string   "linkedin"
@@ -174,9 +175,13 @@ ActiveRecord::Schema.define(version: 20160306225808) do
     t.string   "twitter"
     t.string   "image"
     t.string   "attachment"
+    t.string   "perishable_token",     default: "", null: false
+    t.string   "password_reset_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
+  add_index "users", ["perishable_token"], name: "index_users_on_perishable_token", using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
   add_foreign_key "educations", "users"

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :educations
   resources :skills
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users
 
   get "users/:id/contact" => "emails#show", as: :user_contact
