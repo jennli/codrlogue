@@ -24,6 +24,9 @@ class Ability
       can :manage, Education do |employment|
         user == employment.user
       end
+      can :manage, Project do |project|
+        user == project.user
+      end
 
       can :view, User do |owner|
         owner.approved || user.admin

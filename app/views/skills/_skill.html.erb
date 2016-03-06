@@ -1,6 +1,9 @@
 <div id="<%= dom_id(skill) %>" class="container-fluid">
-  <div class="col-lg-2">
-    <%= skill.title %>
+  <div class="col-lg-1 grey">
+    <%= skill.category.name %>: 
+  </div>
+  <div class="col-lg-1 ">
+    <%= skill.title %> 
   </div>
   <div class="col-lg-6">  
     <% scaled_rating = skill.rating * 2 %>
@@ -10,9 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-2">
-    <%= skill.category.name %>   
-  </div>
+  <div class="col-lg-1"></div>
   <div class="col-lg-2">  
     <% if can? :destroy, skill %>
     <%= link_to "Delete", skill_path(skill),
