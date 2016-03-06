@@ -11,7 +11,7 @@ class EmailsController < ApplicationController
     @message = employer_params[:body]
 
     if valid_email?(@email, @message)
-      ContactsMailer.notify_user(employer_params, @user).deliver_later
+      ContactsMailer.notify_user(employer_params, @user).deliver_now
       redirect_to user_path(@user), notice: "An email has been sent!"
     else
       flash[:alert] = "Please input a valid email and message"
