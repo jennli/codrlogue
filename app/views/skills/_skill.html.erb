@@ -3,7 +3,7 @@
   <%= skill.rating %>
   <%= skill.category.name %>
   <% if can? :destroy, skill %>
-  <%= link_to "Delete", user_skill_path(@user, skill),
+  <%= link_to "Delete", skill_path(skill),
                         method: :delete,
                         remote: true,
                         data: {confirm: "Are you sure?"} %>

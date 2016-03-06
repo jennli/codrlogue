@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  mount_uploader :image, ImageUploader
+  mount_uploader :attachment, AttachmentUploader
+  
   # validates_format_of :linkedin, :with => URI::regexp(%w(http https))
   # validates_format_of :github, :with => URI::regexp(%w(http https))
   # validates_format_of :twitter, :with => URI::regexp(%w(http https))
