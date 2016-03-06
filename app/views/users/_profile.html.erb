@@ -21,6 +21,25 @@
   </div>
   <div class="panel panel-info">
     <div class="panel-heading">
+      <h4>Projects</h4>
+    </div>
+    <div class="panel-body">
+      <div class="projects">
+        <% @user.projects.each do |project| %>
+          <%# becareful of the folder %>
+          <%= render '/projects/project', project: project %>
+        <% end %>
+      </div>
+      <% if can? :manage, @user %>
+        <div id="project-form">
+          <%# byebug %>
+          <%= render 'projects/form' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
       <h4>Educations</h4>
     </div>
     <div class="panel-body">
