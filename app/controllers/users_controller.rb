@@ -56,11 +56,11 @@ class UsersController < ApplicationController
 
   def show
     if can? :view, @user
+      new_instances
       render :show
     else
       redirect_to root_path, alert:" Access denied"
     end
-    new_instances
   end
 
   def edit
