@@ -19,9 +19,16 @@ class UsersController < ApplicationController
   before_action :find_user, except: [:create, :index, :new]
 
   def index
-    if params[:admin_random_string]
+    if params[:filter_string]
       if current_user.admin
-        @users = User.all.order('created_at DESC').page(params[:page])
+        @users = User.where('admin = true').order(created_at: :asc).page(params[:page])
+        render :admin
+      else
+        redirect_to root_path, alert:'access denied'
+      end
+    elsif params[:admin_random_string]
+      if current_user.admin
+        @users = User.order('approved nulls first').order(created_at: :asc).page(params[:page])
         render :admin
       else
         redirect_to root_path, alert:'access denied'
@@ -29,7 +36,6 @@ class UsersController < ApplicationController
     else
       @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
     end
-
   end
 
   def new
