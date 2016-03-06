@@ -15,11 +15,12 @@
         <div class="media">
           <% message = receipt.message %>
           <div class="media-left">
-            <%= message.sender.full_name %>
+            <%=image_tag message.sender.image.url(:thumb) %>
           </div>
 
           <div class="media-body">
-            <h6 class="media-heading"><%= message.sender.full_name %>
+            <%= link_to message.sender.full_name, user_path(message.sender) %>
+            <h6 class="media-heading">
               says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></h6>
               <%= message.body %>
               <hr />
