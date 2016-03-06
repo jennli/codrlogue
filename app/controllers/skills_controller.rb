@@ -12,7 +12,8 @@
 #
 
 class SkillsController < ApplicationController
-before_action :find_skill, only: [:show, :edit, :update, :destroy]
+  before_action :find_skill, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
   def new
     @skill = Skill.new
@@ -69,5 +70,11 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
 
   def skill_params
     params.require(:skill).permit(:title, :rating, :category_id)
+  end
+
+  def authorize_user
+    unless can? :manage, @skill
+      redirect_to root_path , alert: "Access Denied"
+    end
   end
 end
