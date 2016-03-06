@@ -1,7 +1,8 @@
 <div class="container profile-container">
   <%# Stop Unapproved user from being viewed. %>
   <% if can? :view, @user %>
-
+  <% page_header @user.full_name %>
+  
     <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
     <% if can? :manage, @user %>
       <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
@@ -55,6 +56,13 @@
               <p><i class="fa fa-envelope"></i>&nbsp; <%= @user.email %></p>
               <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
 
+
+          <% unless @user.twitter == nil %>
+          <%= link_to @user.twitter do %>
+          <i class="fa fa-twitter-square fa-3x"></i>
+          <% end %>
+          <% end %>
+
             <p><em><%= @user.summary %></em></p>
             <p>
               <%= markdown(@user.description) %>
@@ -63,7 +71,7 @@
         </div>
       </div> <!-- /panel-body-->
     </div>
-  <%= render "profile" %>
-  <% end %>
 
+    <%= render "profile" %>
+    <% end %>
 </div>

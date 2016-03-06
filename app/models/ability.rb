@@ -15,8 +15,14 @@ class Ability
         user == owner
       end
 
-      can :manage, Employment do |owner|
-        user == owner
+      can :manage, Employment do |employment|
+        user == employment.user
+      end
+      can :manage, Skill do |skill|
+        user == skill.user
+      end
+      can :manage, Education do |employment|
+        user == employment.user
       end
 
       can :view, User do |owner|

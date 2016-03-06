@@ -15,4 +15,5 @@
 .DS_Store
 app/.DS_Store
 public/uploads
+
 /config/initializers/email_keys.rb
