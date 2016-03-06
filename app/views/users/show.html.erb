@@ -18,6 +18,28 @@
         <p><strong>Email</strong> <br> <%= @user.email %></p>
         <p><strong>Summary</strong> <br> <%= @user.summary %></p>
         <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
+
+        <div class="">
+          <p><strong>Social Media</strong><p>
+          <% unless @user.linkedin.empty? %>
+            <%= link_to @user.linkedin do %>
+              <i class="fa fa-linkedin-square fa-3x"></i>
+            <% end %>
+          <% end %>
+
+          <% unless @user.github.empty? %>
+            <%= link_to @user.github do %>
+              <i class="fa fa-github-square fa-3x"></i>
+            <% end %>
+          <% end %>
+
+          <% unless @user.twitter.empty? %>
+            <%= link_to @user.twitter do %>
+              <i class="fa fa-twitter-square fa-3x"></i>
+            <% end %>
+          <% end %>
+        </div>
+
         <p><strong>Availability</strong> <br>
           <% if @user.is_available%>
           Available for recruiting
