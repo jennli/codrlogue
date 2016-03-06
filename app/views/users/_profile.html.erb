@@ -38,7 +38,26 @@
       <%# end %>
     </div>
   </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4>Employment</h4>
+    </div>
+    <div class="panel-body">
+      <div class="employments">
+        <% @user.employments.each do |employ| %>
+          <%# be careful of the folder %>
+          <%= render '/employments/employment', employment: employ %>
+        <% end %>
+      </div>
+      <%# if can? :manage, @user %>
+        <div id="employment-form">
+          <%# byebug %>
+          <%= render 'employments/form' %>
+        </div>
+      <%# end %>
+
+
+    </div>
+  </div>
 </div>
-
-
-
