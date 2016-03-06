@@ -34,5 +34,6 @@ module Codrlogue
 
     # Delayed_jobs
     config.active_job.queue_adapter = :delayed_job
+    
   end
 end
