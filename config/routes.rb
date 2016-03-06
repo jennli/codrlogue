@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "users/:id/contact" => "emails#show", as: :user_contact
   post "users/:id/contact" => "emails#send_email", as: :user_contact_send
-  
+
   # Delay_job_web
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
