@@ -16,6 +16,7 @@
           <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
         <% end %>
         <p><strong>Picture</strong><br><%=image_tag @user.image.url(:thumb) %></p>
+        <p><strong>Attachment</strong><br><%=link_to 'Download file', @user.attachment.url %></p>
         <p><strong>Email</strong> <br> <%= @user.email %></p>
         <p><strong>Summary</strong> <br> <%= @user.summary %></p>
         <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
