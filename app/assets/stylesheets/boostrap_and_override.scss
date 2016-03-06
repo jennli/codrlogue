@@ -1,13 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.page-header h1{
-  text-align: center;
-}
-
-.fa{
-  font-size: 20px !important;
-}
 
 .last_message{
   background-color: beige;
@@ -15,4 +8,46 @@
 
 .approve-btn{
   float:right;
+}
+
+/****************** USER PROFILE ******************/
+
+@media (max-width: 940px) {
+  .summary-container {
+    text-align: center;
+  }
+}
+
+.profile-container h1.profile-name-header {
+  margin: 0;
+}
+
+.summary-container p {
+  margin: 10px 0;
+}
+.summary-container .fa {
+  font-size: 1.5em;
+  color: #ff8080;
+  border: 0.2px solid black;
+}
+
+.seo-icons {
+  max-width: 200px;
+}
+
+.user-dp {
+  margin-bottom: 10px;
+}
+
+.available-box .fa{
+  padding: 20px 0;
+}
+
+.available-box .fa-thumbs-up {
+  font-size: 7em;
+  color: #ff8080;
+}
+
+.available-box .fa-thumbs-down {
+  font-size: 7em;
 }
