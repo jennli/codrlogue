@@ -19,6 +19,9 @@ class Ability
         user == owner
       end
 
+      ca :view, User do |owner|
+        owner.approved || user.admin
+      end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
