@@ -3,7 +3,7 @@
     <%= f.input :title %>
   </div>
   <div class="form-group">
-    <%= f.input :rating %>
+    <%= f.input :rating, collection: 1..5%>
   </div>
   <div class="form-group">
     <%= f.association :category, as: :select, selected: 1 %>

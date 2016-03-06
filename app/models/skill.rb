@@ -15,6 +15,7 @@ class Skill < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  validates :title, :rating, :user_id, :category_id, presence: true
+  validates :title, :user_id, :category_id, presence: true
+  validates :rating, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 5 }
   validates_associated :user, :category
 end
