@@ -17,6 +17,7 @@
 class EmploymentsController < ApplicationController
   before_action :find_employment, only: [:update, :destroy]
   before_action :authorize_user, only: [:update, :destroy]
+  before_action :check_if_user_signed_in
 
   ### Employments are created, updated, and destroyed here. ###
 

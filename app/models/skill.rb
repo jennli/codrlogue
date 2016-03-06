@@ -14,4 +14,7 @@
 class Skill < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+
+  validates :title, :rating, :user_id, :category_id, presence: true
+  validates_associated :user, :category
 end

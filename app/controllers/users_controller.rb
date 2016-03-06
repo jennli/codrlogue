@@ -88,6 +88,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def work_profile
+    @skill = Skill.new
+
+    render :work_profile
+  end
+  def contact
+
+  end
+
   private
 
   def user_params
