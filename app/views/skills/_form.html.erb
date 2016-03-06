@@ -1,12 +1,12 @@
 <%= simple_form_for @skill, remote: true do |f| %>
   <div class="form-group">
-    <%= f.input :title %>
+    <%= f.input :title%>
   </div>
   <div class="form-group">
-    <%= f.input :rating, collection: 1..5%>
+    <%= f.input :rating, collection: 1..5 %>
   </div>
   <div class="form-group">
-    <%= f.association :category, as: :select, selected: 1 %>
+    <%= f.association :category, as: :select %>
   </div>
   <div class="form-group">
     <%= f.submit "Add New Skill", class: "btn btn-primary btn-sm" %>
