@@ -11,11 +11,10 @@
  * file per style scope.
  *
  *= require chosen
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
-
-@import "font-awesome";
 
 .navbar-brand {
   height: auto;
