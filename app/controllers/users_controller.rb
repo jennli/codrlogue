@@ -115,6 +115,7 @@ class UsersController < ApplicationController
   end
   def new_instances
     @skill = Skill.new
+    @education = Education.new
     @employment = Employment.new
   end
 
