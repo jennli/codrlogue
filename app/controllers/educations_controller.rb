@@ -15,7 +15,7 @@
 
 class EducationsController < ApplicationController
   before_action :find_education, only: [:show, :edit, :update, :destroy]
-  before_action :find_education, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
   def new
     @education = Education.new
