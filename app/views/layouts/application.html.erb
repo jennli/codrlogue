@@ -11,8 +11,8 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          <%= image_tag 'logo.png', :class => "brand" %>
+        <a class="navbar-brand">
+          <%=link_to( image_tag('logo.png', height: '100', width: '425'), root_path, :class=>"brand") %>
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -22,7 +22,7 @@
         </button>
       </div>
       <div class="collapse navbar-collapse" id="main-navbar">
-        <ul class="nav navbar-nav navbar-left">
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "HOME", root_path %></li>
           <% if user_signed_in? %>
           <li><%= link_to "#{current_user.full_name}'s Profile", user_path(current_user)%></li>

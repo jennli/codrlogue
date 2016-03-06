@@ -10,16 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require chosen
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
 
-@import 'chosen';
-@import "font-awesome";
-
-.navbar .brand {
-  display: inline-block;
-      max-width: 27%;
-      height: auto;
-      padding-left: 100px;
+.navbar-brand {
+  height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 300px;
 }
