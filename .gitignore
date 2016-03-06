@@ -14,3 +14,4 @@
 /app_keys.rb
 .DS_Store
 app/.DS_Store
+public/uploads
