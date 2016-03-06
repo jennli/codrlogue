@@ -54,10 +54,10 @@ class UsersController < ApplicationController
     else
       redirect_to root_path, alert:" Access denied"
     end
+    new_instances
   end
 
   def edit
-
   end
 
   def update
@@ -88,11 +88,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def work_profile
-    @skill = Skill.new
-
-    render :work_profile
-  end
   def contact
 
   end
@@ -111,6 +106,9 @@ class UsersController < ApplicationController
     if !can? :manage, @user
       redirect_to root_path, alert: "Access denied"
     end
+  end
+  def new_instances
+    @skill = Skill.new
   end
 
 end
