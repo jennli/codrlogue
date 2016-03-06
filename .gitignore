@@ -11,7 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
-/app_keys.rb
+/config/initializers/app_keys.rb
 .DS_Store
 app/.DS_Store
 public/uploads
