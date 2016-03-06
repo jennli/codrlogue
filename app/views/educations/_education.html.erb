@@ -7,11 +7,13 @@ field
  %>
 
 <div id="<%= dom_id(education) %>">
-  <%= education.title %>
-  <%= education.rating %>
-  <%= education.category.name %>
+  <%= education.school_name %>
+  <%= education.school_link %>
+  <%= education.grade_year %>
+  <%= education.level %>
+  <%= education.field %>
   <% if can? :destroy, education %>
-  <%= link_to "Delete", user_education_path(@user, education),
+  <%= link_to "Delete", education_path(education),
                         method: :delete,
                         remote: true,
                         data: {confirm: "Are you sure?"} %>
