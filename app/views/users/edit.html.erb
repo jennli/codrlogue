@@ -33,6 +33,17 @@
     </div>
 
     <div class="form-group">
+      <%= f.label 'Social Media' %>
+      <br>
+      <%= f.label 'Linkedin' %>
+      <%= f.url_field :linkedin %>
+      <%= f.label 'Github' %>
+      <%= f.url_field :github %>
+      <%= f.label 'Twitter' %>
+      <%= f.url_field :twitter %>
+    </div>
+
+    <div class="form-group">
       <%= f.label "Available for recruiting?" %>
       <%= f.check_box :is_available %>
     </div>

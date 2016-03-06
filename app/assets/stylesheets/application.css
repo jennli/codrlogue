@@ -16,3 +16,10 @@
 
 @import 'chosen';
 @import "font-awesome";
+
+.navbar .brand {
+  display: inline-block;
+      max-width: 27%;
+      height: auto;
+      padding-left: 100px;
+}
