@@ -1,14 +1,19 @@
 <div class='container'>
 
   <% page_header "All Users" %>
-
+<div class="row">
   <% @users.each do |u| %>
-  <div class='well'>
-    <%= link_to u.full_name, u %> (Account created:
-    <%= ((Time.now - u.created_at).to_i / (60*60*24*365.25)).to_i %> years and
-    <%= ((Time.now - u.created_at).to_i / (60*60*24)).to_i %> days ago)
+  <div class='col-sm-3'>
+    <div class="well">
+      <%=image_tag u.image.url(:medium), class: "user-dp center-block img-rounded" %>
+      <%= link_to u.full_name, u %>
+      <!-- (Account created: -->
+      <!-- <%#= ((Time.now - u.created_at).to_i / (60*60*24*365.25)).to_i %> years and
+      <%#= ((Time.now - u.created_at).to_i / (60*60*24)).to_i %> days ago) -->
+    </div>
   </div>
   <% end %>
+</div>
 
   <div class="digg_pagination">
     <div class="page_info">
