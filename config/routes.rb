@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # post "users/:id/contact" => "emails#send"
 
   get 'users/admin/:admin_random_string' => 'users#index', as: :admin
+  get 'users/admin/:admin_random_string/admin_filter/:filter_string' => 'users#index', as: :admin_filter
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do
