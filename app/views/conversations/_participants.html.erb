@@ -1,5 +1,4 @@
 <% conversation.participants.each do |participant| %>
-  <% unless participant == current_user %>
-    <%#= gravatar_for participant %>
-  <% end %>
+<% unless participant == current_user %> with <%= link_to participant.full_name, user_path(participant) %>
+<% end %>
 <% end %>
