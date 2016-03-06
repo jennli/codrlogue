@@ -2,12 +2,10 @@ Rails.application.routes.draw do
   resources :employments
   resources :companies
   resources :projects
+  resources :categories
   resources :educations
   resources :skills
-  resources :categories
   resources :users do
-    # users/1/profile
-    get :profile, on: :member
   end
 
   get "users/:id/contact" => "emails#show", as: :user_contact
