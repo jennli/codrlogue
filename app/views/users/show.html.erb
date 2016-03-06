@@ -1,6 +1,31 @@
 <div class="container profile-container">
   <%# Stop Unapproved user from being viewed. %>
   <% if can? :view, @user %>
+  <% page_header @user.full_name %>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <% if @user.approved %> Active
+      <% else %>
+      Pending.. You will be notified when your account is approved
+      <%end  %>
+    </div>
+    <div class="panel-body">
+      <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
+      <% if can? :manage, @user %>
+      <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
+      <% end %>
+      <p><strong>Picture</strong><br><%=image_tag @user.image.url(:thumb) %></p>
+      <p><strong>Resume</strong><br>
+        <% if @user.attachment.url %>
+        <%=link_to 'Download resume', @user.attachment.url %>
+        <% else %>
+        <span>N/A</span>
+        <% end %>
+      </p>
+      <p><strong>Email</strong> <br> <%= @user.email %></p>
+      <p><strong>Summary</strong> <br> <%= @user.summary %></p>
+      <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
 
     <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
     <% if can? :manage, @user %>
@@ -55,6 +80,13 @@
               <p><i class="fa fa-envelope"></i>&nbsp; <%= @user.email %></p>
               <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
 
+
+          <% unless @user.twitter == nil %>
+          <%= link_to @user.twitter do %>
+          <i class="fa fa-twitter-square fa-3x"></i>
+          <% end %>
+          <% end %>
+
             <p><em><%= @user.summary %></em></p>
             <p>
               <%= markdown(@user.description) %>
@@ -63,7 +95,7 @@
         </div>
       </div> <!-- /panel-body-->
     </div>
-  <%= render "profile" %>
-  <% end %>
 
+    <%= render "profile" %>
+    <% end %>
 </div>
