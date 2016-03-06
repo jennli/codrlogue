@@ -6,7 +6,7 @@
     <div class="panel panel-info">
       <div class="panel-heading">
         <% if @user.approved %> Active
-        <% else %> 
+        <% else %>
           Pending.. You will be notified when your account is approved
         <%end  %>
       </div>
@@ -21,19 +21,19 @@
 
         <div class="">
           <p><strong>Social Media</strong><p>
-          <% unless @user.linkedin.empty? %>
+          <% unless @user.linkedin == nil %>
             <%= link_to @user.linkedin do %>
               <i class="fa fa-linkedin-square fa-3x"></i>
             <% end %>
           <% end %>
 
-          <% unless @user.github.empty? %>
+          <% unless @user.github == nil %>
             <%= link_to @user.github do %>
               <i class="fa fa-github-square fa-3x"></i>
             <% end %>
           <% end %>
 
-          <% unless @user.twitter.empty? %>
+          <% unless @user.twitter == nil %>
             <%= link_to @user.twitter do %>
               <i class="fa fa-twitter-square fa-3x"></i>
             <% end %>
