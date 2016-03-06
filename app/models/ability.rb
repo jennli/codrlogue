@@ -19,7 +19,7 @@ class Ability
         user == owner
       end
 
-      ca :view, User do |owner|
+      can :view, User do |owner|
         owner.approved || user.admin
       end
     #
