@@ -69,6 +69,7 @@ class SkillsController < ApplicationController
   end
 
   def skill_params
+    params[:skill][:rating] = params[:skill][:rating].to_i
     params.require(:skill).permit(:title, :rating, :category_id)
   end
 
