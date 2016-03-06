@@ -1,10 +1,16 @@
 <div class='container'>
 
-  <% page_header "Pending Accounts" %>
+  <% page_header "Account List" %>
 
+  <%= button_to "Administrator Accounts Only", admin_filter_path(get_admin_random_string, get_filter_string), method: :get %>
+  <br>
+  <%= button_to "All Accounts", admin_path(get_admin_random_string), method: :get %>
+  <br>
   <% @users.each do |u| %>
   <div class='well'>
-    <%= link_to u.full_name, u %>
+    <%= link_to u.full_name, u %> (Account created:
+    <%= ((Time.now - u.created_at).to_i / (60*60*24*365.25)).to_i %> years and
+    <%= ((Time.now - u.created_at).to_i / (60*60*24)).to_i %> days ago)
     <% if u.admin %>
     <span class="badge">Administrator</span>
     <% end %>
