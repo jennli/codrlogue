@@ -4,7 +4,9 @@
 
   <% @users.each do |u| %>
   <div class='well'>
-    <%= link_to u.full_name, u %>
+    <%= link_to u.full_name, u %> (Account created:
+    <%= ((Time.now - u.created_at).to_i / (60*60*24*365.25)).to_i %> years and
+    <%= ((Time.now - u.created_at).to_i / (60*60*24)).to_i %> days ago)
   </div>
   <% end %>
 
