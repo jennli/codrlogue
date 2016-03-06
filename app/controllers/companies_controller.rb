@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
 
   before_action :find_company, only: [:update, :destroy]
   before_action :authorize_user, only: [:update, :destroy]
+  before_action :check_if_user_signed_in
 
   ### Companies are created, updated, and destroyed here. ###
 
@@ -52,12 +53,6 @@ class CompaniesController < ApplicationController
 
     def company_params
       params.require(:company).permit(:name, :link)
-    end
-
-    def authorize_user
-      unless can? :manage, @company
-        redirect_to root_path , alert: "Access Denied"
-      end
     end
 
   end
