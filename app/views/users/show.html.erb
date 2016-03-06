@@ -5,14 +5,14 @@
     <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
     <% if can? :manage, @user %>
       <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
-    <% end %> 
+    <% end %>
 
     <div class="panel panel-info">
       <div class="panel-heading">
         <% if @user.approved %> Active
         <% else %>
           Pending.. You will be notified when your account is approved
-        <%end  %>
+        <% end  %> <%# CLOSE 'IF' %>
       </div>
 
       <div class="panel-body">
@@ -50,7 +50,7 @@
             </div>
           </section>
           <section class="col-lg-9 summary-container">
-        
+
               <h1 class="profile-name-header"><%= @user.full_name %></h1>
               <p><i class="fa fa-envelope"></i>&nbsp; <%= @user.email %></p>
               <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
