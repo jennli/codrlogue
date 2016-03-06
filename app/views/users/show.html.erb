@@ -1,32 +1,33 @@
 <div class="container">
+  <%# Stop Unapproved user from being viewed. %>
   <% if can? :view, @user %>
-  <% page_header @user.full_name %>
+    <% page_header @user.full_name %>
 
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <% if @user.approved %> Active
-      <% else %> 
-        Pending.. You will be notified when your account is approved
-      <%end  %>
-    </div>
-    <div class="panel-body">
-      <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
-      <% if can? :manage, @user %>
-        <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
-      <% end %>
-      <p><strong>Email</strong> <br> <%= @user.email %></p>
-      <p><strong>Summary</strong> <br> <%= @user.summary %></p>
-      <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
-      <p><strong>Availability</strong> <br>
-        <% if @user.is_available%>
-        Available for recruiting
-        <% else %>
-        Not available for recruiting
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <% if @user.approved %> Active
+        <% else %> 
+          Pending.. You will be notified when your account is approved
+        <%end  %>
+      </div>
+      <div class="panel-body">
+        <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
+        <% if can? :manage, @user %>
+          <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
         <% end %>
-      </p>
+        <p><strong>Email</strong> <br> <%= @user.email %></p>
+        <p><strong>Summary</strong> <br> <%= @user.summary %></p>
+        <p><strong>Description</strong> <br> <%= markdown(@user.description) %></p>
+        <p><strong>Availability</strong> <br>
+          <% if @user.is_available%>
+          Available for recruiting
+          <% else %>
+          Not available for recruiting
+          <% end %>
+        </p>
+      </div>
     </div>
-  </div>
-  <% end %>
   <%= render "profile" %>
+  <% end %>
 
 </div>
