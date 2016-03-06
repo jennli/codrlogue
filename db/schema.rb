@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160306040508) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -182,7 +181,6 @@ ActiveRecord::Schema.define(version: 20160306040508) do
     t.string   "twitter"
     t.string   "image"
     t.string   "attachment"
-
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

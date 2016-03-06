@@ -1,27 +1,27 @@
 <div class="container">
   <%# Stop Unapproved user from being viewed. %>
-  <% if can? :view, @user %> <%# 11111111111 %>
+  <% if can? :view, @user %>
     <% page_header @user.full_name %>
 
     <div class="panel panel-info">
       <div class="panel-heading">
-        <% if @user.approved %> Active <%# 2222222 %>
+        <% if @user.approved %> Active
         <% else %>
           Pending.. You will be notified when your account is approved
-        <% end  %> <%# CLOSE 22222222 %>
+        <% end  %> <%# CLOSE 'IF' %>
       </div>
       <div class="panel-body">
         <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
-        <% if can? :manage, @user %> <%# 3333333333 %>
+        <% if can? :manage, @user %>
           <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
-        <% end %> <%# CLOSE 333333 %>
+        <% end %> <%# CLOSE 'IF' %>
         <p><strong>Picture</strong><br><%=image_tag @user.image.url(:thumb) %></p>
         <p><strong>Resume</strong><br>
-        <% if @user.attachment.url %> <%# 444444444 %>
+        <% if @user.attachment.url %>
           <%=link_to 'Download resume', @user.attachment.url %>
         <% else %>
           <span>N/A</span>
-        <% end %> <%# CLOSE 44444444 %>
+        <% end %> <%# CLOSE 'IF' %>
         </p>
         <p><strong>Email</strong> <br> <%= @user.email %></p>
         <p><strong>Summary</strong> <br> <%= @user.summary %></p>
@@ -30,36 +30,36 @@
         <div class="">
           <p><strong>Social Media</strong><p>
           <% unless @user.linkedin == nil %>
-          <%= link_to @user.linkedin do %> <%# 5555555555 %>
-            <i class="fa fa-linkedin-square fa-3x"></i>
-          <% end %> <%# CLOSE 555555555 %>
-          <%# end %>
+            <%= link_to @user.linkedin do %>
+              <i class="fa fa-linkedin-square fa-3x"></i>
+            <% end %> <%# CLOSE 'DO' %>
+          <% end %> <%# CLOSE 'UNLESS' %>
 
           <% unless @user.github == nil %>
-          <%= link_to @user.github do %> <%# 666666666 %>
-          <i class="fa fa-github-square fa-3x"></i>
-          <% end %> <%# CLOSE 6666666666 %>
-          <%# end %>
+            <%= link_to @user.github do %>
+              <i class="fa fa-github-square fa-3x"></i>
+            <% end %> <%# CLOSE 'DO' %>
+          <% end %> <%# CLOSE 'UNLESS' %>
 
           <% unless @user.twitter == nil %>
-          <%= link_to @user.twitter do %> <%# 77777777777 %>
-          <i class="fa fa-twitter-square fa-3x"></i>
-          <% end %> <%# CLOSE 77777777777 %>
-          <%# end %>
+            <%= link_to @user.twitter do %>
+              <i class="fa fa-twitter-square fa-3x"></i>
+            <% end %> <%# CLOSE 'DO' %>
+          <% end %> <%# CLOSE 'UNLESS' %>
 
         </div>
 
         <p><strong>Availability</strong> <br>
-          <% if @user.is_available%> <%# 88888888888888 %>
-          Available for recruiting
+          <% if @user.is_available%>
+            Available for recruiting
           <% else %>
-          Not available for recruiting
-          <% end %> <%# CLOSE 8888888888 %>
+            Not available for recruiting
+          <% end %> <%# CLOSE 'IF' %>
         </p>
       </div>
     </div>
     <%= render "profile" %>
-  <% end %> <%# CLOSE 11111111111 %>
+  <% end %> <%# CLOSE 'IF' %>
 
 
 </div>
