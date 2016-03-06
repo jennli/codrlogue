@@ -6,12 +6,22 @@
     <%= f.input :location %>
   </div>
   <div class="form-group">
-    <%= f.input :start_year, order: [:month, :year], discard_hour: true %>
-    <%# collection: (1980..2016) %>
+    <%=
+      f.input :start_year,
+      order: [:month, :year],
+      discard_hour: true,
+      start_year: 1980,
+      end_year: Date.today.year
+    %>
   </div>
   <div class="form-group">
-    <%= f.input :end_year, order: [:month, :year], discard_hour: true %>
-    <%# collection: (1980..2016) %>
+    <%=
+      f.input :end_year,
+      order: [:month, :year],
+      discard_hour: true,
+      start_year: 1980,
+      end_year: Date.today.year
+    %>
   </div>
   <div class="form-group">
     <%= f.input :summary %>
