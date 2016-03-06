@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :educations, dependent: :destroy
   has_many :projects, dependent: :destroy
 
-  has_many :companies, through: :employments
+  # has_many :companies, through: :employments
 
   has_secure_password
 
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   # pagination per page limit
-  self.per_page = 10
+  self.per_page = 8
 
   def full_name
     "#{first_name} #{last_name}"

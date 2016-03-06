@@ -1,7 +1,11 @@
 <div id="<%= dom_id(employment) %>">
-  <%= employment.title %>
-  <%= employment.rating %>
-  <%= employment.category.name %>
+  <%= employment.job_title %> <br>
+  <%= employment.location %> <br>
+  <%= formatted_date_time(employment.start_year) %> -
+  <%= formatted_date_time(employment.end_year) %> <br>
+  <%= employment.summary %> <br>
+  <%= employment.company_name %> <br>
+  <%= employment.company_link %> <br>
   <% if can? :destroy, employment %>
   <%= link_to "Delete", employment_path(employment),
                         method: :delete,
