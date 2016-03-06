@@ -17,6 +17,7 @@
 
 class UsersController < ApplicationController
   before_action :find_user, except: [:create, :index, :new]
+  before_action :authenticate_user, only: [:edit, :edit_password]
 
   def index
     if params[:admin_random_string]
@@ -48,20 +49,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    if can? :view, @user
+      render :show
+    else
+      redirect_to root_path, alert:" Access denied"
+    end
+    new_instances
   end
 
   def edit
-
   end
 
   def update
     @user.slug = nil
     if @user.update user_params
       if user_params.has_key?(:approved) || user_params.has_key?(:admin)
-      flash[:notice] = "Update success from Administrator"
-      @users = User.all.order('created_at DESC').page(params[:page])
-      redirect_to admin_path(get_admin_random_string)
+        flash[:notice] = "Update success from Administrator"
+        @users = User.all.order('created_at DESC').page(params[:page])
+        redirect_to admin_path(get_admin_random_string)
       else
         redirect_to @user, notice: "update successfully"
       end
@@ -71,6 +76,7 @@ class UsersController < ApplicationController
   end
 
   def edit_password
+
   end
 
   def update_password
@@ -82,11 +88,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def work_profile
-    @skill = Skill.new
-
-    render :work_profile
-  end
   def contact
 
   end
@@ -99,6 +100,15 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.friendly.find params[:id]
+  end
+
+  def authenticate_user
+    if !can? :manage, @user
+      redirect_to root_path, alert: "Access denied"
+    end
+  end
+  def new_instances
+    @skill = Skill.new
   end
 
 end

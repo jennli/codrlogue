@@ -23,13 +23,15 @@
   <%= f.input :description %>
 </div>
 <div class="form-group">
+
   <%= f.label 'Social Media' %>
   <%= f.input :linkedin, as: url %>
   <%= f.input :github, as: url %>
   <%= f.input :twitter, as: url %>
 </div>
 <div class="form-group">
-  <%= f.input :is_available, label:'available?',  as: :check_boxes %>
+  <%= f.label "Available for recruiting?" %>
+  <%= f.check_box :is_available %>
 </div>
 <%= f.submit class: "btn btn-primary btn-sm" %>
 <% end %>
