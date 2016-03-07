@@ -130,9 +130,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params[:user][:linkedin] = sanitize_url(params[:user][:linkedin])
-    params[:user][:github] = sanitize_url(params[:user][:github])
-    params[:user][:twitter] = sanitize_url(params[:user][:twitter])
     params.require(:user).permit(
       :first_name, 
       :last_name, 
