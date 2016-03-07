@@ -11,20 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306040508) do
+ActiveRecord::Schema.define(version: 20160306225808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "companies", force: :cascade do |t|
-    t.string   "name"
-    t.string   "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,12 +58,12 @@ ActiveRecord::Schema.define(version: 20160306040508) do
     t.datetime "end_year"
     t.text     "summary"
     t.integer  "user_id"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "company_name"
+    t.string   "company_link"
   end
 
-  add_index "employments", ["company_id"], name: "index_employments_on_company_id", using: :btree
   add_index "employments", ["user_id"], name: "index_employments_on_user_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -172,8 +165,8 @@ ActiveRecord::Schema.define(version: 20160306040508) do
     t.text     "description"
     t.boolean  "admin"
     t.boolean  "is_available"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.boolean  "approved"
     t.string   "slug"
     t.string   "linkedin"
@@ -181,13 +174,14 @@ ActiveRecord::Schema.define(version: 20160306040508) do
     t.string   "twitter"
     t.string   "image"
     t.string   "attachment"
+    t.string   "password_reset_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
   add_foreign_key "educations", "users"
-  add_foreign_key "employments", "companies"
   add_foreign_key "employments", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

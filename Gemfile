@@ -47,6 +47,8 @@ gem "mailboxer"
 gem 'gravatar_image_tag'
 gem 'jquery-turbolinks'
 gem 'chosen-rails'
+gem 'jquery-ui-rails'
+gem 'rails-jquery-autocomplete'
 
 # Annotate to add comments about schema
 gem 'annotate'
@@ -62,6 +64,7 @@ gem 'annotate'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
   gem 'factory_girl_rails'
   gem 'nyan-cat-formatter'
 end

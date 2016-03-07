@@ -14,7 +14,8 @@
 #
 
 class EducationsController < ApplicationController
-before_action :find_education, only: [:show, :edit, :update, :destroy]
+  before_action :find_education, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
   def new
     @education = Education.new
@@ -43,19 +44,22 @@ before_action :find_education, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
+    respond_to do |format|
+      format.js { render :education_edit }
+    end
   end
 
   def update
     respond_to do |format|
       if @education.update education_params
-        format.json { render json: @education.to_json }
+        format.js { render :education_update_success }
       else
-        format.json { render json: @education.errors }
+        format.js { render :education_update_failure }
       end
     end
   end
 
-  def destory
+  def destroy
     @education.user = current_user
     @education.destroy
     respond_to do |format|
@@ -71,5 +75,11 @@ before_action :find_education, only: [:show, :edit, :update, :destroy]
 
   def education_params
     params.require(:education).permit(:school_name,:school_link,:grade_year,:level,:field)
+  end
+
+  def authorize_user
+    unless can? :manage, @education
+      redirect_to root_path , alert: "Access Denied"
+    end
   end
 end

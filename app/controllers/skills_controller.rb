@@ -12,7 +12,8 @@
 #
 
 class SkillsController < ApplicationController
-before_action :find_skill, only: [:show, :edit, :update, :destroy]
+  before_action :find_skill, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
   def new
     @skill = Skill.new
@@ -36,28 +37,31 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
 
   def show
     respond_to do |format|
-      format.json { render json: @skill.to_json }
+      format.js { render json: @skill.to_json }
     end
   end
 
   def edit
+    respond_to do |format|
+      format.js { render :skill_edit }
+    end
   end
 
   def update
     respond_to do |format|
       if @skill.update skill_params
-        format.json { render json: @skill.to_json }
+        format.js { render :skill_update_success }
       else
-        format.json { render json: @skill.errors }
+        format.js { render :skill_update_failure }
       end
     end
   end
 
-  def destory
+  def destroy
     @skill.user = current_user
     @skill.destroy
     respond_to do |format|
-      format.json { render :skill_destroy }
+      format.js { render :skill_destroy }
     end
   end
 
@@ -68,6 +72,13 @@ before_action :find_skill, only: [:show, :edit, :update, :destroy]
   end
 
   def skill_params
+    params[:skill][:rating] = params[:skill][:rating].to_i
     params.require(:skill).permit(:title, :rating, :category_id)
+  end
+
+  def authorize_user
+    unless can? :manage, @skill
+      redirect_to root_path , alert: "Access Denied"
+    end
   end
 end

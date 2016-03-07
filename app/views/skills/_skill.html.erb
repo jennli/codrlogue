@@ -1,11 +1,27 @@
-<div id="<%= dom_id(skill) %>">
-  <%= skill.title %>
-  <%= skill.rating %>
-  <%= skill.category.name %>
-  <% if can? :destroy, skill %>
-  <%= link_to "Delete", skill_path(skill),
-                        method: :delete,
-                        remote: true,
-                        data: {confirm: "Are you sure?"} %>
-  <% end %>
+<div id="<%= dom_id(skill) %>" class="container-fluid">
+  <div class="col-lg-1 grey">
+    <%= skill.category.name %>: 
+  </div>
+  <div class="col-lg-1 ">
+    <%= skill.title %> 
+  </div>
+  <div class="col-lg-6">  
+    <% scaled_rating = skill.rating * 2 %>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: <%= scaled_rating %>0%;">
+        <span class="sr-only"><%= scaled_rating %>0% Complete</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1"></div>
+  <div class="col-lg-2">  
+    <% if can? :manage, skill %>
+    <%= link_to "Edit", edit_skill_path(skill) , remote: true %>
+
+    <%= link_to "Delete", skill_path(skill),
+                          method: :delete,
+                          remote: true,
+                          data: {confirm: "Are you sure?"} %>
+    <% end %>
+  </div>
 </div>
