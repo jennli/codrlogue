@@ -4,7 +4,7 @@
 
   <%= button_to "Administrator Accounts Only", admin_filter_path(get_admin_random_string, get_filter_string), method: :get %>
   <br>
-  <%= button_to "All Accounts", admin_path(get_admin_random_string), method: :get %>
+  <%= button_to "All Accounts", admin_path(User::ADMIN), method: :get %>
   <br>
   <% @users.each do |u| %>
   <div class='well'>

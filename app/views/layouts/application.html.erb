@@ -38,7 +38,12 @@
 
         <% if user_signed_in? && current_user.admin %>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Administrator", admin_path(get_admin_random_string) %></li>
+          <%= form_tag(users_path, :method => "get", id: "search-form", class: "navbar-form navbar-left", role: "search") do %>
+          <div class="form-group">
+            <%= text_field_tag :search, params[:search], placeholder: "keyword", class: "form-control", required: true%>
+          </div>
+          <%= submit_tag "Search", :name => nil , class: "btn btn-default" %>
+          <% end %>
         </ul>
         <% end %>
       </div>

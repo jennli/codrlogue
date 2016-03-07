@@ -21,21 +21,49 @@ class UsersController < ApplicationController
 
   def index
     if params[:filter_string]
+      filter_string = params[:filter_string]
+      case filter_string
+      when User::AVAILABLE
+        @users = User.where(is_available: true, approved: true).page(params[:page])
+      when User::UN_AVAILALBE
+        @users = User.where(is_available: [false, nil], approved: true).page(params[:page])
+      end
+    end
+
+    if params[:search]
+      keyword = params[:search]
+      @users = []
+      @users.concat(
+
+      a = User.where("first_name ilike ? last_name ilike ? or summary ilike ? OR description ilike ? ", "%#{keyword}","%#{keyword}","%#{keyword}","%#{keyword}"))
+      b = User.joins(:skills).where("title ilike ? ", "%#{keyword}%")
+      c = User.joins(:employments).where("company_name ilike ?", "%#{keyword}%")
+      d = User.joins(:projects).where("title ilike ? OR description ilike ?","%#{keyword}%","%#{keyword}%")
+      @users = (a + b + c + d).uniq
+    end
+    #
+    #     if filter_string = User::Admin
+    #     @users = User.where('admin = true').order(created_at: :asc).page(params[:page])
+    #     render :admin
+    #   elsif filter_string
+    #
+    #   else
+    #     redirect_to root_path, alert:'access denied'
+    #   end
+    if params[:admin_random_string]
       if current_user.admin
-        @users = User.where('admin = true').order(created_at: :asc).page(params[:page])
-        render :admin
+        if params[:admin]
+          @users = User.where('admin = true').order(created_at: :asc).page(params[:page])
+        else
+          @users = User.order('approved nulls first').order(created_at: :asc).page(params[:page])
+          render :admin
+        end
       else
         redirect_to root_path, alert:'access denied'
       end
-    elsif params[:admin_random_string]
-      if current_user.admin
-        @users = User.order('approved nulls first').order(created_at: :asc).page(params[:page])
-        render :admin
-      else
-        redirect_to root_path, alert:'access denied'
-      end
+
     else
-      @users =  User.where('approved = true').order('created_at DESC').page(params[:page])
+      @users =  User.where(approved: true).order('created_at DESC').page(params[:page])
     end
   end
 

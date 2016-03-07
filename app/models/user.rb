@@ -47,6 +47,12 @@ class User < ActiveRecord::Base
   # mail boxer setting
   acts_as_messageable
 
+  ADMIN = 'admin'
+  AVAILABLE = 'available'
+  UN_AVAILALBE = 'unavailable'
+  APPROVED = 'not_approved'
+  PENDING= 'pending'
+
   def mailboxer_email(object)
     email
   end

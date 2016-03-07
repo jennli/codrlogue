@@ -1,7 +1,10 @@
 <div class='container'>
 
   <% page_header "All Users" %>
-
+  <% if user_signed_in? && current_user.admin %>
+  <%=link_to "Administrator", admin_path(get_admin_random_string) %></li>
+  <% end %>
+  
   <% @users.each do |u| %>
   <div class='well'>
     <%= link_to u.full_name, u %> (Account created:
