@@ -1,5 +1,4 @@
 $('<%= j render "education", education: @education %>').hide().appendTo('.educations').slideDown();
-
 <% @education = Education.new %>
-
 $('#new_education').html('<%= j render "form" %>').child().slideUp();
+$('#toggle-education-form').click();

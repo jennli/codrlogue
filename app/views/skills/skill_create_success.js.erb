@@ -1,5 +1,4 @@
 $('<%= j render "skill", skill: @skill %>').hide().appendTo('.skills').slideDown();
-
 <% @skill = Skill.new %>
-
-$('#new_skill').html('<%= j render "form" %>').child().slideUp();
+$('#new_skill').html('<%= j render "form" %>').children().slideUp();
+$('#toggle-skill-form').click();
