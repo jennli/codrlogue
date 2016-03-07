@@ -57,7 +57,7 @@ class SkillsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @skill.user = current_user
     @skill.destroy
     respond_to do |format|

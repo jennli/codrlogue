@@ -30,15 +30,15 @@ class UsersController < ApplicationController
       end
     end
 
-    if params[:search]
-      keyword = params[:search]
-      @users = []
-      a = User.where("first_name ilike ? OR last_name ilike ? OR summary ilike ? OR description ilike ? ", "%#{keyword}%","%#{keyword}%","%#{keyword}%","%#{keyword}%")
-      b = User.joins(:skills).where("title ilike ? ", "%#{keyword}%")
-      c = User.joins(:employments).where("company_name ilike ?", "%#{keyword}%")
-      d = User.joins(:projects).where("title ilike ? OR project.description ilike ?","%#{keyword}%","%#{keyword}%")
-      @users = (a + b + c + d).uniq
-    end
+    # if params[:search]
+    #   keyword = params[:search]
+    #   @users = []
+    #   a = User.where("first_name ilike ? OR last_name ilike ? OR summary ilike ? OR description ilike ? ", "%#{keyword}%","%#{keyword}%","%#{keyword}%","%#{keyword}%")
+    #   b = User.joins(:skills).where("title ilike ? ", "%#{keyword}%")
+    #   c = User.joins(:employments).where("company_name ilike ?", "%#{keyword}%")
+    #   d = User.joins(:projects).where("title ilike ? OR project.description ilike ?","%#{keyword}%","%#{keyword}%")
+    #   @users = (a + b + c + d).uniq
+    # end
     #
     #     if filter_string = User::Admin
     #     @users = User.where('admin = true').order(created_at: :asc).page(params[:page])
