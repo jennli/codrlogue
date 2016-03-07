@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @project.user = current_user
     @project.destroy
     respond_to do |format|

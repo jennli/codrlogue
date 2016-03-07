@@ -56,7 +56,7 @@ class EducationsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @education.user = current_user
     @education.destroy
     respond_to do |format|
