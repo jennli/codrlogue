@@ -21,3 +21,48 @@
 //= require jquery-ui
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
+
+
+
+
+$("document").ready(function(){
+
+  // Edit Users Page
+
+  var summaryTextarea = $(".edit-summary textarea"),
+      descriptionTextarea = $(".edit-description textarea");
+
+  summaryTextarea.on('keyup', function(){
+
+    var maxNum = 140;
+    var currentNum = $(this).val().length;
+    var numsLeft = maxNum - currentNum;
+
+    if( $(".edit-summary").find('.char-count').length < 1 ){
+      $(this).prev().after("<span class='char-count'>" + numsLeft + " characters left...</span>");
+    } else {
+      $('.char-count').html(numsLeft + " characters left...");
+    }
+
+    $('.char-count').show();
+  });
+
+  summaryTextarea.focusout(function(){
+    $('.char-count').fadeOut(1500);
+  });
+
+
+  $(".basic-right")
+
+
+
+
+
+
+
+
+
+
+
+
+});

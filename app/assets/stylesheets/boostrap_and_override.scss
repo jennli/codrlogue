@@ -32,24 +32,6 @@
   }
 
 
-// @media (min-width: 940px) {
-  
-//    .edit-summary textarea {
-//     min-height: 70px;
-//     resize: none;
-//   }
-
-//   .edit-description textarea {
-//     min-height: 200px;
-//     resize: none;
-//   }
-// }
-
-
-
-
-
-
 /****************** USER PROFILE ******************/
 
 .profile-container h1.profile-name-header {
@@ -98,4 +80,15 @@
 .edit-dp-container img {
   width: 100px;
   display: block;
+}
+
+.char-count {
+  font-style: italic;
+  margin-left: 20px;
+  color: #FA5858;
+  display: none;
+}
+
+.char-count:focus {
+  display: inline;
 }
