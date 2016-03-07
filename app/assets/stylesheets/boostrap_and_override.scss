@@ -67,6 +67,10 @@
   font-size: 7em;
 }
 
+abbr[title] {
+  border-bottom: none;
+}
+
 /****************** USER EDIT PROFILE ******************/
 
 .notice li {
@@ -82,13 +86,10 @@
   display: block;
 }
 
-.char-count {
+.summary-count, .description-count {
   font-style: italic;
   margin-left: 20px;
   color: #FA5858;
   display: none;
 }
 
-.char-count:focus {
-  display: inline;
-}
