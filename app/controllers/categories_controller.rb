@@ -51,7 +51,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @categorie.user = current_user
     @categorie.destroy
   end
