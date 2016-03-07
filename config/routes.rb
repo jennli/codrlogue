@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :companies
   resources :projects
   resources :categories
-  resources :educations
+  resources :educations do
+    get :autocomplete_education_school_name, :on => :collection
+  end
   resources :skills
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users

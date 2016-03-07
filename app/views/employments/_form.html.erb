@@ -16,10 +16,10 @@
       end_year: Date.today.year
     %>
     <br>
-    <%= f.input :company_name, 
-      url: autocomplete_employment_company_name_employments_path, 
-      as: :autocomplete, 
-      label: false, 
+    <%= f.input :company_name,
+      url: autocomplete_employment_company_name_employments_path,
+      as: :autocomplete,
+      label: false,
       placeholder: "Company Name" %>
     <%= f.input :location, label: false, placeholder: "Location" %>
     <%= f.input :company_link, label: false, placeholder: "Link to Company", wrapper_html: { class: 'wide' } %>

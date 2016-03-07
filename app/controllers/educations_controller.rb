@@ -14,6 +14,7 @@
 #
 
 class EducationsController < ApplicationController
+  autocomplete :education, :school_name
   before_action :find_education, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user, only: [:update, :destroy]
 

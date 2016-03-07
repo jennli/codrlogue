@@ -103,7 +103,7 @@ class UsersController < ApplicationController
         @users = User.all.order('created_at DESC').page(params[:page])
         redirect_to admin_path(get_admin_random_string)
       else
-        redirect_to @user, notice: "update successfully"
+        redirect_to @user, notice: "Updated successfully"
       end
     else
       render :edit
@@ -116,7 +116,7 @@ class UsersController < ApplicationController
 
   def update_password
     if @user.authenticate(params[:user][:old_password]) && (@user.update user_params)
-      redirect_to @user, notice: "password update successfully"
+      redirect_to @user, notice: "Password updated successfully"
     else
       flash[:alert]="Invalid. Please try again."
       render :edit_password
@@ -131,18 +131,18 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :first_name, 
-      :last_name, 
-      :email, 
-      :password, 
-      :password_confirmation, 
-      :summary, 
-      :description, 
-      :is_available, 
-      :approved, 
-      :admin, 
-      :linkedin, 
-      :github, 
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      :summary,
+      :description,
+      :is_available,
+      :approved,
+      :admin,
+      :linkedin,
+      :github,
       :twitter,
       :image,
       :attachment)
