@@ -1,13 +1,13 @@
 <div id="skill-form">
   <%= simple_form_for @skill, remote: true do |f| %>
     <div class="form-group">
-      <%= f.input :title%>
+      <%= f.association :category, as: :select, label: false, include_blank: "Select Category" %>
     </div>
     <div class="form-group">
-      <%= f.input :rating, collection: 1..5 %>
+      <%= f.input :title, label: false, placeholder: "Skill Name"%>
     </div>
     <div class="form-group">
-      <%= f.association :category, as: :select %>
+      <%= f.input :rating, collection: 1..5, label: false, include_blank: "Select Rating" %>
     </div>
     <div class="form-group">
       <%= f.submit class: "btn btn-primary btn-sm" %>

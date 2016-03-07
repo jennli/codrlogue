@@ -1,21 +1,14 @@
 <%# :title,:description,:project_link,:github_link %>
 <div id="project-form">
   <%= simple_form_for @project, remote: true do |f| %>
-
-  <div class="form-group">
-    <%= f.input :title %>
-  </div>
-  <div class="form-group">
-    <%= f.input :description %>
-  </div>
-  <div class="form-group">
-    <%= f.input :project_link %>
-  </div>
-  <div class="form-group">
-    <%= f.input :github_link %>
-  </div>
-  <div class="form-group">
+    <!-- Tooltip? -->
+    <%= f.input :title, label: false, placeholder: "Project Name" %>
+    <br>
+    <%= f.input :project_link, label: false, placeholder: "Link to the Project", wrapper_html: { class: 'wide' } %>
+    <%= f.input :github_link, label: false, placeholder: "GitHub Link of the Project", wrapper_html: { class: 'wide' } %>
+    <br>
+    <%= f.input :description, label: false, placeholder: "Description of the Project", wrapper_html: { class: 'wide' } %>
+    <br>
     <%= f.submit class: "btn btn-primary btn-sm" %>
-  </div>
   <% end %>
 <div id="project-form">
