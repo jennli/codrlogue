@@ -71,6 +71,7 @@ $(document).ready(function() {
   // 'Toggle' functionality for forms in user show page
   $('#toggle-skill-form').on('click',function(){
     if ($('#skill-form').is(":visible")){
+      $(this).html("Add New Skill");
       $('#new-skill #skill-form').slideUp();
     }
     else {
@@ -80,6 +81,7 @@ $(document).ready(function() {
 
     $('#toggle-project-form').on('click',function(){
       if($("#project-form").is(":visible")){
+        $(this).html("Add New Project");
         $('#new-project #project-form').slideUp();
       }
       else{
@@ -90,6 +92,7 @@ $(document).ready(function() {
 
     $('#toggle-education-form').on('click',function(){
       if($("#education-form").is(":visible")){
+        $(this).html("Add New Education History");
         $('#new-education #education-form').slideUp();
       }
       else{
@@ -100,6 +103,7 @@ $(document).ready(function() {
 
       $('#toggle-employment-form').on('click',function(){
         if($("#employment-form").is(":visible")){
+          $(this).html("Add New Employment History");
           $('#new-employment #employment-form').slideUp();
         }
         else{
