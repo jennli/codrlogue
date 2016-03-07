@@ -16,7 +16,7 @@
     </div>
 
     <div class="panel-body">
-        <%= simple_form_for @user do |f|%>
+        <%= simple_form_for @user, html: { multipart: true } do |f|%>
           <div class="row">
 
             <div class="col-md-4">
@@ -76,6 +76,10 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
+                    <%= f.check_box :remove_image %>
+                    Remove Image?
+                  </div>
+                  <div class="form-group">
                     <%= f.input :is_available, :as => :boolean %>
                   </div>
                 </div>
@@ -93,6 +97,5 @@
     </div> <!-- / Panel-body -->
   </div> <!--/ Panel-->
 
-  
-</div>
 
+</div>

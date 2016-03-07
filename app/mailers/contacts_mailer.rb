@@ -7,7 +7,3 @@ class ContactsMailer < ApplicationMailer
   end
 
 end
-
-
-
-
