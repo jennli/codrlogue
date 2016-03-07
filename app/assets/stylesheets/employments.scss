@@ -1,3 +1,13 @@
 // Place all the styles related to the employments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ui-menu-item {
+  list-style-position: outside;
+  list-style-type: none;
+  // background-color: white;
+}
+
+.ui-autocomplete {
+  left: 194px !important;
+}
