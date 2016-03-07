@@ -5,8 +5,14 @@
   padding: 2px 0;
 }
 
-.skills .grey {
+.skills .action{
+  padding-left: 0.5em;
+}
+
+.skills .description{
   color: grey;
+  text-align: right;
+  padding-right: 0.5em;
 }
 
 #skill-form div{

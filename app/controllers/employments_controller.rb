@@ -16,7 +16,7 @@
 
 class EmploymentsController < ApplicationController
   autocomplete :employment, :company_name
-  before_action :find_employment, only: [:update, :destroy]
+  before_action :find_employment, only: [:update, :destroy, :edit]
   before_action :authorize_user, only: [:update, :destroy]
   before_action :check_if_user_signed_in
 
@@ -33,8 +33,14 @@ class EmploymentsController < ApplicationController
     if @employment.save
         format.js { render :employment_create_success }
       else
-        format.js { render :employment_create_failure}
+        format.js { render :employment_create_failure }
       end
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.js { render :employment_edit }
     end
   end
 
@@ -43,7 +49,7 @@ class EmploymentsController < ApplicationController
       if @employment.update(employment_params)
         format.js { render :employment_update_success }
       else
-        format.js { render :employment_update_failure}
+        format.js { render :employment_update_failure }
       end
     end
   end
@@ -61,6 +67,7 @@ class EmploymentsController < ApplicationController
     end
 
     def employment_params
+      params[:employment][:company_link] = sanitize_url(params[:employment][:company_link])
       params.require(:employment).permit(
         :job_title,
         :location,

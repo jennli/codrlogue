@@ -1,6 +1,27 @@
 // Place all the styles related to the employments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.employments div {
+  padding: 2px 0;
+}
+
+.employments .grey {
+  color: grey;
+}
+
+#employment-form div{
+  display: inline-block;
+}
+
+#employment-form .wide {
+  width: 75%;
+}
+
+.employments h3, h4 {
+  display: inline-block;
+  margin: 0.2em
+}
+
 
 .ui-menu-item {
   list-style-position: outside;
