@@ -29,10 +29,7 @@
         <% end %>
       </div>
       <% if can? :manage, @user %>
-        <div id="project-form">
-          <%# byebug %>
-          <%= render 'projects/form' %>
-        </div>
+        <%= render 'projects/form' %>
       <% end %>
     </div>
   </div>
