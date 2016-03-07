@@ -22,8 +22,10 @@
   </div>
 
   <div class="digg_pagination">
-    <div class="page_info">
+    <ul class="pager">
       <%= page_entries_info @users %>
-    </div>
-    <%= will_paginate @users, :container => false %>
+    </ul>
+    <div style="text-align:center;">
+    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
   </div>
+</div>

@@ -49,6 +49,7 @@ gem 'jquery-turbolinks'
 gem 'chosen-rails'
 gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
+gem 'will_paginate-bootstrap'
 
 # Annotate to add comments about schema
 gem 'annotate'
