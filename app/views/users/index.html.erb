@@ -2,7 +2,7 @@
 
   <% page_header "All Users" %>
   <% if user_signed_in? && current_user.admin %>
-  <h1 style="text-align: center;"><%=link_to "Administrator Site", admin_path(get_admin_random_string), class: "btn btn-warning" %></h1>
+  <h1 style="text-align: center;"><%=link_to "Administrator Site", admin_path(get_admin_random_string), class: "btn btn-danger" %></h1>
   <hr>
   <% end %>
 

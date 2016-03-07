@@ -5,9 +5,9 @@
     <div class="col-lg-12">
         <%= project.description %>
     </div>
-    
+
     <div class="col-lg-1"></div>
-    
+
     <div class="col-lg-12">
       <% if can? :destroy, project %>
         <%= link_to "Edit", edit_project_path(project), remote: true, class: "btn btn-primary btn-sm" %>
