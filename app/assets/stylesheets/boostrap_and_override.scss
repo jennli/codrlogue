@@ -95,8 +95,18 @@ ul.nav a {
   float: right;
 }
 
+.employments p {
+  margin-left: 4.8px;
+}
+
 
 /****************** MEDIA QUERY ******************/
+
+  @media (max-width: 1200px) {
+    .summary-container {
+      text-align: center;
+    }
+  }
 
   @media (max-width: 544px) {
     .edit-description textarea {
