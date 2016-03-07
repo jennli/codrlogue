@@ -2,28 +2,24 @@
   <%# Stop Unapproved user from being viewed. %>
   <% if can? :view, @user %>
   <% page_header @user.full_name %>
-  
-    <%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
-    <% if can? :manage, @user %>
-      <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info"  %>
-    <% end %>
 
     <div class="panel panel-info">
       <div class="panel-heading">
-        <% if @user.approved %> <h4>Basic Info</h4>
+        <% if @user.approved %> 
+          <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info" %>
+          <h4>Basic Info</h4>
         <% else %>
-          Pending.. You will be notified when your account is approved
+          <% if can? :manage, @user %>
+            <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info" %>
+          <% end %>
+          <h4>Pending.. You will be notified when your account is approved</h4>
         <% end  %> <%# CLOSE 'IF' %>
       </div>
 
       <div class="panel-body">
         <div class="row">
-          <section class="col-lg-3">
-            <% if @user.image.url(:medium).nil? %>
-              <%=image_tag "default_photo.png", class: "user-dp center-block img-rounded" %>
-            <% else %>
-              <%=image_tag @user.image.url(:medium), class: "user-dp center-block img-rounded" %>
-            <% end %>
+          <section class="col-lg-3 col-md-12">
+            <%=image_tag @user.image.url(:medium), class: "user-dp center-block img-rounded" %>
             <div class="row seo-icons center-block">
               <%# LinkedIn Icon %>
               <% unless @user.linkedin == nil %>
@@ -44,22 +40,20 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="available-box text-center">
-              <% if @user.is_available%>
-                <i class="fa fa-thumbs-up"></i>
-                <p>Available</p>
-              <% else %>
-                <i class="fa fa-thumbs-down"></i>
-                <p>Not available</p>
-              <% end %>
-            </div>
           </section>
-          <section class="col-lg-9 summary-container">
-
+          <section class="col-lg-9 col-md-12 summary-container">
+            <div class="row">
               <h1 class="profile-name-header"><%= @user.full_name %></h1>
-              <p><i class="fa fa-envelope"></i>&nbsp; <%= @user.email %></p>
+                <span class="available-tag">
+                  <% if @user.is_available%>
+                    <h3>Available</h3> <i class="fa fa-thumbs-up"></i>
+                  <% else %>
+                    <h3>Not available</h3> <i class="fa fa-thumbs-down"></i>
+                  <% end %>
+                </span>
+              <p><i class="fa fa-envelope"></i>&nbsp; <%= link_to "#{@user.email}", user_contact_path(@user) %></p>
               <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
-
+            </div>
             <p><em><%= @user.summary %></em></p>
             <p>
               <%= markdown(@user.description) %>
@@ -74,3 +68,4 @@
 </div>
 
 
+<%= link_to "Email student", user_contact_path(@user), class: "btn btn-info"  %>
