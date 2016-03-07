@@ -37,6 +37,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :get_admin_random_string
 
+  def sanitize_url(link)
+    ((/^http:\/\// =~ link) == nil) ? "http://#{link}" : link
+  end
 
   #   rescue_from ActiveRecord::RecordNotFound do
   #   flash[:warning] = 'Resource not found.'

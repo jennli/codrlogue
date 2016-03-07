@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: categories
+# Table name: categorys
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = current_user.categories
+    @categories = current_user.categorys
   end
 
   def show

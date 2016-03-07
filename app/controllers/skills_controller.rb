@@ -37,7 +37,7 @@ class SkillsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json { render json: @skill.to_json }
+      format.js { render json: @skill.to_json }
     end
   end
 
