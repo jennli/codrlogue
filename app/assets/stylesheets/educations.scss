@@ -5,10 +5,16 @@
   padding: 2px 0;
 }
 
-.educations .grey {
+.educations .description{
   color: grey;
+  text-align: right;
+  padding-right: 0.5em;
 }
 
 #education-form div{
   display: inline-block;
+}
+
+#education-form .wide {
+  width: 75%;
 }

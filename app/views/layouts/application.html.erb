@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand">
-          <%=link_to( image_tag('logo3.png', height: '50', width: '250'), root_path, :class=>"brand") %>
+          <%=link_to( image_tag('logo3.png', height: '50', width: '250'), landing_path, :class=>"brand") %>
         </a>
         <button type="button" class="navbar-toggle navbar-fixed-top collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -23,7 +23,7 @@
       </div>
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "HOME", root_path %></li>
+          <li><%= link_to "Browse", root_path %></li>
           <% if user_signed_in? %>
           <li><%= link_to "#{current_user.full_name}'s Profile", user_path(current_user)%></li>
           <li><%= link_to "SIGN OUT", sessions_path, method: :delete %></li>

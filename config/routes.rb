@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/home' => 'home#landing'
+  get '/home' => 'home#landing', as: :landing
 
   resources :employments do
     get :autocomplete_employment_company_name, :on => :collection

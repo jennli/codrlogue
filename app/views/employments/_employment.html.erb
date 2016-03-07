@@ -1,15 +1,23 @@
 <div id="<%= dom_id(employment) %>">
-  <%= employment.job_title %> <br>
-  <%= employment.location %> <br>
-  <%= formatted_date_time(employment.start_year) %> -
-  <%= formatted_date_time(employment.end_year) %> <br>
-  <%= employment.summary %> <br>
-  <%= employment.company_name %> <br>
-  <%= employment.company_link %> <br>
-  <% if can? :destroy, employment %>
-  <%= link_to "Delete", employment_path(employment),
-                        method: :delete,
-                        remote: true,
-                        data: {confirm: "Are you sure?"} %>
+  <div class="col-lg-12">
+    <h3><%= employment.job_title %></h3>
+    <%= formatted_date_time(employment.start_year) %> - <%= formatted_date_time(employment.end_year) %>
+  </div>
+  <div class="col-lg-12">
+    <h4>
+      <%= link_to employment.company_name, "#{employment.company_link}" %>
+    </h4>
+      <%= employment.location %>    
+  </div>
+  <div class="col-lg-12">
+    <p><%= employment.summary %> </p>
+  </div>
+  <% if can? :manage, employment %>
+    <%= link_to "Edit", edit_employment_path(employment), remote: true, class: "btn btn-primary btn-sm" %>
+    <%= link_to "Delete", employment_path(employment),
+                          method: :delete,
+                          remote: true,
+                          class: "btn btn-danger btn-sm",
+                          data: {confirm: "Are you sure?"} %>
   <% end %>
 </div>
