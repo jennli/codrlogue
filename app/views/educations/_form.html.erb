@@ -2,19 +2,19 @@
   <%= simple_form_for @education, remote: true do |f| %>
 
   <div class="form-group">
-    <%= f.input :school_name %>
+    <%= f.input :school_name, label: false, placeholder: "School Name" %>
   </div>
   <div class="form-group">
-    <%= f.input :school_link %>
+    <%= f.input :school_link, label: false, placeholder: "Link to the Scool", wrapper_html: { class: 'wide' } %>
   </div>
   <div class="form-group">
-    <%= f.input :grade_year, order: [:month, :year], discard_hour: true, start_year: 1980, end_year: Date.today.year %>
+    <%= f.input :grade_year, order: [:month, :year], discard_hour: true, start_year: 1980, end_year: Date.today.year, label: "Graduation Year" %>
   </div>
   <div class="form-group">
-    <%= f.input :level, as: :select, collection: Education::VALID_EDUCATION_LEVELS %>
+    <%= f.input :level, as: :select, collection: Education::VALID_EDUCATION_LEVELS, label: false, include_blank: "Select Level" %>
   </div>
   <div class="form-group">
-    <%= f.input :field %>
+    <%= f.input :field, label: false, placeholder: "Field of Study" %>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary btn-sm" %>

@@ -52,16 +52,16 @@ class SkillsController < ApplicationController
       if @skill.update skill_params
         format.js { render :skill_update_success }
       else
-        format.json { render :skill_update_failure }
+        format.js { render :skill_update_failure }
       end
     end
   end
 
-  def destory
+  def destroy
     @skill.user = current_user
     @skill.destroy
     respond_to do |format|
-      format.json { render :skill_destroy }
+      format.js { render :skill_destroy }
     end
   end
 

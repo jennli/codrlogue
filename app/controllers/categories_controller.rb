@@ -13,17 +13,17 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def new
-    @categorie = Category.new
+    @category = Category.new
   end
 
   def create
-    @categorie = Category.new categorie_params
-    @categorie.user = current_user
+    @category = Category.new category_params
+    @category.user = current_user
     respond_to do |format|
-      if @categorie.save
-        format.json { render json: @categorie.to_json }
+      if @category.save
+        format.json { render json: @category.to_json }
       else
-        format.json { render json: @categorie.errors }
+        format.json { render json: @category.errors }
       end
     end
   end
@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json { render json: @categorie.to_json }
+      format.json { render json: @category.to_json }
     end
   end
 
@@ -43,17 +43,17 @@ class CategoriesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @categorie.update categorie_params
-        format.json { render json: @categorie.to_json }
+      if @category.update category_params
+        format.json { render json: @category.to_json }
       else
-        format.json { render json: @categorie.errors }
+        format.json { render json: @category.errors }
       end
     end
   end
 
-  def destory
-    @categorie.user = current_user
-    @categorie.destroy
+  def destroy
+    @category.user = current_user
+    @category.destroy
   end
 
   private

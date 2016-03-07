@@ -59,11 +59,11 @@ class EducationsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @education.user = current_user
     @education.destroy
     respond_to do |format|
-      format.json { render :education_destroy }
+      format.js { render :education_destroy }
     end
   end
 
