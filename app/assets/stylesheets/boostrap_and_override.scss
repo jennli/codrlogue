@@ -7,16 +7,50 @@
 }
 
 .approve-btn{
-  float:right;
+  float: right;
 }
+
+
+/****************** MEDIA QUERY ******************/
+
+  @media (max-width: 544px) {
+    .edit-description textarea {
+      min-height: 210px;
+    }
+  }
+
+  @media (min-width: 545px) {
+    .edit-summary textarea {
+      max-height: 54px;
+      resize: none;
+    }
+
+    .edit-description textarea {
+      min-height: 120px;
+      resize: none;
+    }
+  }
+
+
+// @media (min-width: 940px) {
+  
+//    .edit-summary textarea {
+//     min-height: 70px;
+//     resize: none;
+//   }
+
+//   .edit-description textarea {
+//     min-height: 200px;
+//     resize: none;
+//   }
+// }
+
+
+
+
+
 
 /****************** USER PROFILE ******************/
-
-@media (max-width: 940px) {
-  .summary-container {
-    text-align: center;
-  }
-}
 
 .profile-container h1.profile-name-header {
   margin: 0;
@@ -28,7 +62,6 @@
 .summary-container .fa {
   font-size: 1.5em;
   color: #ff8080;
-  border: 0.2px solid black;
 }
 
 .seo-icons {
@@ -50,4 +83,19 @@
 
 .available-box .fa-thumbs-down {
   font-size: 7em;
+}
+
+/****************** USER EDIT PROFILE ******************/
+
+.notice li {
+  list-style-type: none;
+}
+
+.edit-dp-container {
+  text-align: center;
+}
+
+.edit-dp-container img {
+  width: 100px;
+  display: block;
 }
