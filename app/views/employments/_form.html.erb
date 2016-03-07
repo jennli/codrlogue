@@ -1,11 +1,6 @@
+<div id="employment-form">
 <%= simple_form_for @employment, remote: true do |f| %>
-  <div class="form-group">
-    <%= f.input :job_title %>
-  </div>
-  <div class="form-group">
-    <%= f.input :location %>
-  </div>
-  <div class="form-group">
+    <%= f.input :job_title, label: false, placeholder: "Job Title" %>
     <%=
       f.input :start_year,
       order: [:month, :year],
@@ -13,8 +8,6 @@
       start_year: 1980,
       end_year: Date.today.year
     %>
-  </div>
-  <div class="form-group">
     <%=
       f.input :end_year,
       order: [:month, :year],
@@ -22,20 +15,17 @@
       start_year: 1980,
       end_year: Date.today.year
     %>
-  </div>
-  <div class="form-group">
-    <%= f.input :summary %>
-  </div>
-  <div class="form-group">
-    <%= f.input :company_name, :url => autocomplete_employment_company_name_employments_path, :as => :autocomplete %>
-  </div>
-  <div class="form-group">
-    <%= f.input :company_link %>
-  </div>
-
-
-
-  <div class="form-group">
-    <%= f.submit "Add Employment History", class: "btn btn-primary btn-sm" %>
-  </div>
+    <br>
+    <%= f.input :company_name, 
+      url: autocomplete_employment_company_name_employments_path, 
+      as: :autocomplete, 
+      label: false, 
+      placeholder: "Company Name" %>
+    <%= f.input :location, label: false, placeholder: "Location" %>
+    <%= f.input :company_link, label: false, placeholder: "Link to Company", wrapper_html: { class: 'wide' } %>
+    <br>
+    <%= f.input :summary, label: false, placeholder: "Job Description", wrapper_html: { class: 'wide' } %>
+    <br>
+    <%= f.submit class: "btn btn-primary btn-sm" %>
 <% end %>
+</div>

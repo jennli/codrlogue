@@ -73,8 +73,9 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
+    params[:project][:project_link] = sanitize_url(params[:project][:project_link])
+    params[:project][:github_link] = sanitize_url(params[:project][:github_link])
     params.require(:project).permit(:title,:description,:project_link,:github_link)
-    
   end
 
   def authorize_user

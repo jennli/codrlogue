@@ -131,7 +131,25 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :summary, :description, :is_available, :approved, :admin, :linkedin, :github, :twitter,:image,:attachment)
+    params[:user][:linkedin] = sanitize_url(params[:user][:linkedin])
+    params[:user][:github] = sanitize_url(params[:user][:github])
+    params[:user][:twitter] = sanitize_url(params[:user][:twitter])
+    params.require(:user).permit(
+      :first_name, 
+      :last_name, 
+      :email, 
+      :password, 
+      :password_confirmation, 
+      :summary, 
+      :description, 
+      :is_available, 
+      :approved, 
+      :admin, 
+      :linkedin, 
+      :github, 
+      :twitter,
+      :image,
+      :attachment)
   end
 
   def find_user
