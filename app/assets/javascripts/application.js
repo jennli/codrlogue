@@ -75,7 +75,7 @@ $(document).ready(function() {
       $('#new-skill #skill-form').slideUp();
     }
     else {
-      $(this).html("cancel");
+      $(this).html("Cancel");
       $('#new-skill #skill-form').slideDown();
     }});
 
@@ -85,7 +85,7 @@ $(document).ready(function() {
         $('#new-project #project-form').slideUp();
       }
       else{
-        $(this).html("cancel");
+        $(this).html("Cancel");
         $('#new-project #project-form').slideDown();
       }
     });
@@ -96,7 +96,7 @@ $(document).ready(function() {
         $('#new-education #education-form').slideUp();
       }
       else{
-        $(this).html("cancel");
+        $(this).html("Cancel");
         $('#new-education #education-form').slideDown();
       }
     });
@@ -107,7 +107,7 @@ $(document).ready(function() {
           $('#new-employment #employment-form').slideUp();
         }
         else{
-          $(this).html("cancel");
+          $(this).html("Cancel");
           $('#new-employment #employment-form').slideDown();
         }
       });
