@@ -23,19 +23,19 @@
             <div class="row seo-icons center-block">
               <%# LinkedIn Icon %>
               <% unless @user.linkedin == nil %>
-                <%= link_to @user.linkedin do %>
+                <%= link_to @user.linkedin_link do %>
                   <i class="col-xs-4 text-center fa fa-linkedin-square fa-3x"></i>
                 <% end %>
               <% end %>
               <%# Github Icon %>
               <% unless @user.github == nil %>
-                <%= link_to @user.github do %>
+                <%= link_to @user.github_link do %>
                   <i class="col-xs-4 text-center fa fa-github-square fa-3x"></i>
                 <% end %>
               <% end %>
               <%# Twitter Icon %>
               <% unless @user.twitter == nil %>
-                <%= link_to @user.twitter do %>
+                <%= link_to @user.twitter_link do %>
                   <i class="col-xs-4 text-center fa fa-twitter-square fa-3x"></i>
                 <% end %>
               <% end %>

@@ -64,6 +64,18 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def twitter_link
+    "http://twitter.com/#{twitter}"
+  end
+
+  def github_link
+    "http://github.com/#{github}"
+  end
+
+  def linkedin_link
+    "http://linkedin.com/in/#{linkedin}"
+  end
+
   def generate_password_reset_token!
     update_attribute(:password_reset_token, SecureRandom.urlsafe_base64(48))
   end
