@@ -94,7 +94,6 @@ class UsersController < ApplicationController
 
   def update
     @user.slug = nil
-    binding.pry
     if params[:user][:remove_image]
       @user.remove_image!
       @user.save
