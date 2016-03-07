@@ -2,7 +2,7 @@
 
   <% page_header "All Users" %>
   <% if user_signed_in? && current_user.admin %>
-  <h1 style="text-align: center;"><%=link_to "Administrator Site", admin_path(get_admin_random_string), class: "btn btn-warning" %></h1>
+  <h1 style="text-align: center;"><%=link_to "Administrator Site", admin_path(get_admin_random_string), class: "btn btn-danger" %></h1>
   <hr>
   <% end %>
 
@@ -22,8 +22,10 @@
   </div>
 
   <div class="digg_pagination">
-    <div class="page_info">
+    <ul class="pager">
       <%= page_entries_info @users %>
-    </div>
-    <%= will_paginate @users, :container => false %>
+    </ul>
+    <div style="text-align:center;">
+    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
   </div>
+</div>

@@ -1,4 +1,4 @@
-<%# 
+<%#
 school_name
 school_link
 grade_year
@@ -8,24 +8,24 @@ field
 
 <div id="<%= dom_id(education) %>" class="container-fluid">
   <div class="col-lg-12">
-    
-    <div class="col-lg-2 description">Level of Study: </div>
+
+    <div class="col-lg-2 ">Level of Study: </div>
     <div class="col-lg-2"><%= education.level %></div>
 
-    <div class="col-lg-2 description">Field of Study: </div>
+    <div class="col-lg-2">Field of Study: </div>
     <div class="col-lg-2"><%= education.field %></div>
   </div>
-  
+
   <div class="col-lg-12">
-      
-    <div class="col-lg-2 description">Year: </div>
+
+    <div class="col-lg-2">Year: </div>
     <div class="col-lg-2"><%= formatted_date_time(education.grade_year) %></div>
 
-    <div class="col-lg-2 description">School: </div>
+    <div class="col-lg-2">School: </div>
     <%# absolute_url = "http://#{education.school_link}" if (/^http:\/\// =~ education.school_link) == nil %>
     <div class="col-lg-2"><%= link_to education.school_name, education.school_link %></div>
   </div>
-  
+
   <div class="col-lg-12">
     <% if can? :manage, education %>
       <%= link_to "Edit", edit_education_path(education), remote: true, class: 'btn btn-primary btn-sm' %>
