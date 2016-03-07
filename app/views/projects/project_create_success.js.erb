@@ -1,5 +1,7 @@
-$('.projects').prepend('<%= j render "project", project: @project %>');
+$('<%= j render "project", project: @project %>').hide().appendTo('.projects').slideDown();
 
 <% @project = Project.new %>
 
-$('#project-form').html('<%= j render "form" %>');
+$('#new_project').html('<%= j render "form" %>').child().slideUp();
+
+

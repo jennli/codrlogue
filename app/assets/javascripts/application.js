@@ -71,10 +71,10 @@ $(document).ready(function() {
   });
 
   // 'Toggle' functionality for forms in user show page
-  $('#toggle-skill-form').on('click',function(){$('#skill-form').toggle();});
-  $('#toggle-project-form').on('click',function(){$('#project-form').toggle();});
-  $('#toggle-education-form').on('click',function(){$('#education-form').toggle();});
-  $('#toggle-employment-form').on('click',function(){$('#employment-form').toggle();});
+  $('#toggle-skill-form').on('click',function(){$('#new-skill #skill-form').slideDown();});
+  $('#toggle-project-form').on('click',function(){$('#new-project #project-form').slideDown();});
+  $('#toggle-education-form').on('click',function(){$('#new-education #education-form').slideDown();});
+  $('#toggle-employment-form').on('click',function(){$('#new-employment #employment-form').slideDown();});
 
 
 
