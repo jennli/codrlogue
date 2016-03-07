@@ -10,7 +10,7 @@
 
     <div class="panel panel-info">
       <div class="panel-heading">
-        <% if @user.approved %> Active
+        <% if @user.approved %> <h4>Basic Info</h4>
         <% else %>
           Pending.. You will be notified when your account is approved
         <% end  %> <%# CLOSE 'IF' %>
@@ -59,13 +59,6 @@
               <h1 class="profile-name-header"><%= @user.full_name %></h1>
               <p><i class="fa fa-envelope"></i>&nbsp; <%= @user.email %></p>
               <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
-
-
-          <% unless @user.twitter == nil %>
-          <%= link_to @user.twitter do %>
-          <i class="fa fa-twitter-square fa-3x"></i>
-          <% end %>
-          <% end %>
 
             <p><em><%= @user.summary %></em></p>
             <p>
