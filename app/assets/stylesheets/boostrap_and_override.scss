@@ -1,22 +1,125 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/****************** NAV BAR ******************/
+
+.navbar {
+  background-color: #ab5443;
+}
+
+/* Carousel */
+
+#quote-carousel {
+    padding: 0 10px 30px 10px;
+    margin-top: 30px;
+    /* Control buttons  */
+    /* Previous button  */
+    /* Next button  */
+    /* Changes the position of the indicators */
+    /* Changes the color of the indicators */
+}
+#quote-carousel .carousel-control {
+    background: none;
+    color: #ab5443;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: 30px;
+}
+#quote-carousel .carousel-control.left {
+    left: -60px;
+}
+#quote-carousel .carousel-control.right {
+    right: -60px;
+}
+#quote-carousel .carousel-indicators {
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-right: -19px;
+}
+#quote-carousel .carousel-indicators li {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    cursor: pointer;
+    border: 4px solid #CCC;
+    border-radius: 50px;
+    opacity: 0.4;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+#quote-carousel .carousel-indicators .active {
+    background: #333333;
+    width: 128px;
+    height: 128px;
+    border-radius: 100px;
+    border-color: #ab5443;
+    opacity: 1;
+    overflow: hidden;
+}
+.carousel-inner {
+    min-height: 300px;
+}
+.item blockquote {
+    border-left: none;
+    margin: 0;
+}
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
 
 .last_message{
   background-color: beige;
 }
 
 .approve-btn{
-  float:right;
+  float: right;
 }
+
+
+/****************** MEDIA QUERY ******************/
+
+  @media (max-width: 544px) {
+    .edit-description textarea {
+      min-height: 210px;
+    }
+  }
+
+  @media (min-width: 545px) {
+    .edit-summary textarea {
+      max-height: 54px;
+      resize: none;
+    }
+
+    .edit-description textarea {
+      min-height: 120px;
+      resize: none;
+    }
+  }
+
+
+// @media (min-width: 940px) {
+
+//    .edit-summary textarea {
+//     min-height: 70px;
+//     resize: none;
+//   }
+
+//   .edit-description textarea {
+//     min-height: 200px;
+//     resize: none;
+//   }
+// }
+
+
+
+
+
 
 /****************** USER PROFILE ******************/
-
-@media (max-width: 940px) {
-  .summary-container {
-    text-align: center;
-  }
-}
 
 .profile-container h1.profile-name-header {
   margin: 0;
@@ -28,7 +131,6 @@
 .summary-container .fa {
   font-size: 1.5em;
   color: #ff8080;
-  border: 0.2px solid black;
 }
 
 .seo-icons {
@@ -50,4 +152,19 @@
 
 .available-box .fa-thumbs-down {
   font-size: 7em;
+}
+
+/****************** USER EDIT PROFILE ******************/
+
+.notice li {
+  list-style-type: none;
+}
+
+.edit-dp-container {
+  text-align: center;
+}
+
+.edit-dp-container img {
+  width: 100px;
+  display: block;
 }
