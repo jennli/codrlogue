@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row landing-carousel-quotes">
     <div class="col-md-12" data-wow-delay="0.2s">
       <div class="carousel slide" data-ride="carousel" id="quote-carousel">
         <!-- Bottom Carousel Indicators -->
@@ -62,5 +62,5 @@
 </div>
 <hr>
 <div style="text-align:center;">
-  <h3><%= link_to "Available Users", user_filter_path(User::AVAILABLE), class: "landing-button" %> <%= link_to "All Users", users_path, class: "landing-button" %></h3>
+<%= link_to "Available Users", user_filter_path(User::AVAILABLE), class: "landing-button" %> <%= link_to "All Users", users_path, class: "landing-button" %>
 </div>
