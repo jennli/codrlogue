@@ -1,5 +1,5 @@
 class UsersShortlistsController < ApplicationController
-  before_action { @user = User.find params[:id] }
+  before_action :set_user, except: [:index]
   def create
     session[:shortlist_ids] ||= []
     if session[:shortlist_ids].include? params[:id]
@@ -24,5 +24,11 @@ class UsersShortlistsController < ApplicationController
   def destroy
     session[:shortlist_ids].delete(params[:id])
     render
+  end
+
+  private 
+
+  def set_user
+    @user = User.find params[:id]
   end
 end
