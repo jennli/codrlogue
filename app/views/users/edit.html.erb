@@ -51,15 +51,15 @@
               </div>
             </div> <%# /col-4- %>
 
-            <div class="col-md-8">
+            <div class="col-md-8 basic-right-col">
               <div class="row">
                 <div class="edit-summary col-xs-12">
-                  <%= f.input :summary %>
+                  <%= f.input :summary, :error => false, :input_html => {:maxlength => 140} %>
                 </div>
               </div>
               <div class="row">
                 <div class="edit-description col-xs-12">
-                  <%= f.input :description %>
+                  <%= f.input :description, :input_html => {:maxlength => 500 } %>
                 </div>
               </div>
 

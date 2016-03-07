@@ -2,7 +2,12 @@
 <div class="container-fluid">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h4>Skills</h4>
+      <h4>
+        Skills
+        <button id="toggle-skill-form" class="btn btn-warning btn-xs pull-right">
+          Add Skills
+        </button>
+      </h4>
     </div>
     <div class="panel-body">
       <div class="skills">
@@ -17,9 +22,15 @@
       <% end %>
     </div>
   </div>
+
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h4>Projects</h4>
+      <h4>
+        Projects
+        <button id="toggle-project-form" class="btn btn-warning btn-xs pull-right">
+          Add Projects
+        </button>
+      </h4>
     </div>
     <div class="panel-body">
       <div class="projects">
@@ -33,9 +44,14 @@
       <% end %>
     </div>
   </div>
+
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h4>Educations</h4>
+      <h4>Education
+        <button id="toggle-education-form" class="btn btn-warning btn-xs pull-right">
+          Add Education History
+        </button>
+      </h4>
     </div>
     <div class="panel-body">
       <div class="educations">
@@ -52,7 +68,12 @@
 
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h4>Employment</h4>
+      <h4>
+        Employment
+        <button id="toggle-employment-form" class="btn btn-warning btn-xs pull-right">
+          Add Employment History
+        </button>
+      </h4>
     </div>
     <div class="panel-body">
       <div class="employments">
@@ -64,8 +85,6 @@
       <% if can? :manage, @user %>
         <%= render 'employments/form' %>
       <% end %>
-
-
     </div>
   </div>
 </div>
