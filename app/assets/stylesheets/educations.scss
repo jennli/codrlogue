@@ -22,3 +22,17 @@
 #new-education #education-form{
   display: none;
 }
+
+.ui-menu-item {
+  list-style-position: outside;
+  list-style-type: none;
+  background-color: white;
+
+}
+
+.ui-autocomplete {
+  width: 33% !important;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
