@@ -12,10 +12,8 @@
         <% end %>
       </div>
       <% if can? :manage, @user %>
-        <div id="skill-form">
           <%# byebug %>
           <%= render 'skills/form' %>
-        </div>
       <% end %>
     </div>
   </div>
@@ -31,10 +29,7 @@
         <% end %>
       </div>
       <% if can? :manage, @user %>
-        <div id="project-form">
-          <%# byebug %>
-          <%= render 'projects/form' %>
-        </div>
+        <%= render 'projects/form' %>
       <% end %>
     </div>
   </div>
@@ -50,10 +45,7 @@
         <% end %>
       </div>
       <% if can? :manage, @user %>
-        <div id="education-form">
-          <%# byebug %>
           <%= render 'educations/form' %>
-        </div>
       <% end %>
     </div>
   </div>
