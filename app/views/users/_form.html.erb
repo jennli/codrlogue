@@ -5,13 +5,13 @@
       <%= f.input :last_name %>
       <%= f.input :email%>
       <%= f.input :password %>
-      <%= f.input :password_confirmation, label: 'confirm password' %>
+      <%= f.input :password_confirmation, label: 'Confirm Password' %>
       <%= f.input :summary %>
       <%= f.input :description %>
       <%= f.label 'Social Media' %>
-      <%= f.input :linkedin, as: :url %>
-      <%= f.input :github, as: :url %>
-      <%= f.input :twitter, as: :url %>
+      <%= f.input :linkedin, as: :url, label: "LinkedIn Username", placeholder:"linkedin username, eg. 'jennifer-li-51788156'" %>
+      <%= f.input :github, as: :url, label: "GitHub Username", placeholder:"github username, eg. 'jennli'" %>
+      <%= f.input :twitter, as: :url, label: "Twitter Username", placeholder:"twitter username, eg. 'lidongning1108'" %>
       <%= f.label "Available for recruiting?" %>
       <%= f.check_box :is_available %>
       <%= f.input :image %>

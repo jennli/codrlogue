@@ -1,90 +1,179 @@
-<h1>Profile</h1>
+<div class="row">
+  <h1>Profile</h1>
+
+  <!-- <div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked navbar-bright" id="sidebar">
+      <li><a href="#skills-header">Skills</a></li>
+      <li><a href="#projects-header">Projects</a></li>
+      <li><a href="#education-header">Education</a></li>
+      <li> <a href="#employment-header">Employment</a></li>
+    </ul>
+  </div> -->
+
+</div>
 <div class="container-fluid">
-  <div class="panel panel-info">
+  <div class="panel panel-danger">
     <div class="panel-heading">
-      <h4>
+      <h4 id="skills-header">
         Skills
-        <button id="toggle-skill-form" class="btn btn-warning btn-xs pull-right">
-          Add Skills
-        </button>
       </h4>
     </div>
     <div class="panel-body">
       <div class="skills">
         <% @user.skills.each do |skill| %>
-          <%# becareful of the folder %>
-          <%= render '/skills/skill', skill: skill %>
+        <%# becareful of the folder %>
+        <%= render '/skills/skill', skill: skill %>
         <% end %>
       </div>
       <% if can? :manage, @user %>
-          <%# byebug %>
-          <%= render 'skills/form' %>
+      <div class="col-lg-12 new-toggle">
+        <button id="toggle-skill-form" class="btn btn-warning btn-sm">
+          Add New Skill
+        </button>
+      </div>
+      <div id="new-skill">
+        <%= render 'skills/form' %>
+      </div>
       <% end %>
     </div>
   </div>
-
-  <div class="panel panel-info">
+  <hr>
+  <div class="panel panel-danger">
     <div class="panel-heading">
-      <h4>
+      <h4 id="projects-header">
         Projects
-        <button id="toggle-project-form" class="btn btn-warning btn-xs pull-right">
-          Add Projects
-        </button>
       </h4>
     </div>
     <div class="panel-body">
       <div class="projects">
         <% @user.projects.each do |project| %>
-          <%# becareful of the folder %>
-          <%= render '/projects/project', project: project %>
+        <%# becareful of the folder %>
+        <%= render '/projects/project', project: project %>
         <% end %>
       </div>
       <% if can? :manage, @user %>
+      <div class="col-lg-12 new-toggle">
+        <button id="toggle-project-form" class="btn btn-warning btn-sm ">
+          Add New Project
+        </button>
+      </div>
+      <div id="new-project">
         <%= render 'projects/form' %>
+      </div>
       <% end %>
     </div>
   </div>
-
-  <div class="panel panel-info">
+  <hr>
+  <div class="panel panel-danger">
     <div class="panel-heading">
-      <h4>Education
-        <button id="toggle-education-form" class="btn btn-warning btn-xs pull-right">
-          Add Education History
-        </button>
+      <h4 id="education-header">Education
       </h4>
     </div>
     <div class="panel-body">
       <div class="educations">
         <% @user.educations.each do |education| %>
-          <%# becareful of the folder %>
-          <%= render '/educations/education', education: education %>
+        <%# becareful of the folder %>
+        <%= render '/educations/education', education: education %>
         <% end %>
       </div>
       <% if can? :manage, @user %>
-          <%= render 'educations/form' %>
+      <div class="col-lg-12 new-toggle">
+        <button id="toggle-education-form" class="btn btn-warning btn-sm">
+          Add New Education History
+        </button>
+      </div>
+      <div id="new-education">
+        <%= render 'educations/form' %>
+      </div>
       <% end %>
     </div>
   </div>
-
-  <div class="panel panel-info">
+  <hr>
+  <div class="panel panel-danger">
     <div class="panel-heading">
-      <h4>
+      <h4 id='employment-header'>
         Employment
-        <button id="toggle-employment-form" class="btn btn-warning btn-xs pull-right">
-          Add Employment History
-        </button>
       </h4>
     </div>
     <div class="panel-body">
       <div class="employments">
         <% @user.employments.each do |employ| %>
-          <%# be careful of the folder %>
-          <%= render '/employments/employment', employment: employ %>
+        <%# be careful of the folder %>
+        <%= render '/employments/employment', employment: employ %>
         <% end %>
       </div>
       <% if can? :manage, @user %>
+      <div class="col-lg-12 new-toggle">
+        <button id="toggle-employment-form" class="btn btn-warning btn-sm">
+          Add New Employment History
+        </button>
+      </div>
+      <div id="new-employment">
         <%= render 'employments/form' %>
+      </div>
       <% end %>
     </div>
   </div>
+
 </div>
+</div>
+
+<!-- <style>
+.navbar-bright {
+  background-color:lightred;
+  color:#fff;
+}
+
+.navbar-bright a, #masthead a, #masthead .lead {
+  color:white;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.navbar-bright li > a:hover {
+  background-color:#white;
+}
+
+.affix-top,.affix{
+  position: static;
+}
+.nav-stacked{
+  margin-left: 70%;
+  /*border-style: groove;*/
+  opacity: 0.5;
+}
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+    margin-top:30px;
+    width:228px;
+  }
+
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}
+
+#sidebar li.active {
+  border:10 blue solid;
+  border-right-width:4px;
+}
+</style>
+
+<script>
+$('#sidebar').affix({
+  offset: {
+    top: 245
+  }
+});
+
+var $body   = $(document.body);
+var navHeight = $('.navbar').outerHeight(true) + 10;
+
+$body.scrollspy({
+  target: '#leftCol',
+  offset: navHeight
+});
+</script> -->

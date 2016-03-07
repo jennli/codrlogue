@@ -10,7 +10,7 @@
     </div>
   <% end %>
 
-  <div class="panel panel-info">
+  <div class="panel panel-danger">
     <div class="panel-heading">
       <%= @user.first_name %>'s Basic Info
     </div>
@@ -36,17 +36,17 @@
               <%# Seo edit inputs %>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <%= f.input :twitter, label: "<i class='fa fa-twitter'></i>".html_safe, placeholder: "https://twitter.com/example" %>
+                  <%= f.input :twitter, label: "<i class='fa fa-twitter'></i> Twitter Username".html_safe, placeholder: "example: 'lidongning1108'" %>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <%= f.input :linkedin, label: "<i class='fa fa-linkedin'></i>".html_safe, placeholder: "https://linkedin.com/in/example" %>
+                  <%= f.input :linkedin, label: "<i class='fa fa-linkedin'></i> LinkedIn Username".html_safe, placeholder: "example: 'jennifer-li-51788156'" %>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <%= f.input :github, label: "<i class='fa fa-github'></i>".html_safe, placeholder: "https://github.com/example"  %>
+                  <%= f.input :github, label: "<i class='fa fa-github'></i> GitHub Username".html_safe, placeholder: "example: 'jennli'"  %>
                 </div>
               </div>
             </div> <%# /col-4- %>

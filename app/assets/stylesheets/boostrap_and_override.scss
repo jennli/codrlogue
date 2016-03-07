@@ -1,10 +1,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+a {
+  color: #ff8787;
+}
+
+a:hover {
+  color: #d54944;
+}
+
 /****************** NAV BAR ******************/
 
 .navbar {
-  background-color: #ab5443;
+  background-color: #d54944;
+}
+
+ul.nav a:hover {
+  color: #fff !important;
+}
+
+ul.nav a {
+  color: #ff8787 !important;
 }
 
 /* Carousel */
@@ -20,7 +36,7 @@
 }
 #quote-carousel .carousel-control {
     background: none;
-    color: #ab5443;
+    color: #d54944;
     font-size: 2.3em;
     text-shadow: none;
     margin-top: 30px;
@@ -53,7 +69,7 @@
     width: 128px;
     height: 128px;
     border-radius: 100px;
-    border-color: #ab5443;
+    border-color: #d54944;
     opacity: 1;
     overflow: hidden;
 }
@@ -100,11 +116,29 @@
     }
   }
 
-
 /****************** USER PROFILE ******************/
+
+.panel-heading h4 {
+  display: inline-block;
+}
+
+.panel-heading .btn {
+  margin-right: 15px;
+}
 
 .profile-container h1.profile-name-header {
   margin: 0;
+  display: inline-block;
+}
+
+.available-tag {
+  margin-left: 20px;
+}
+
+.available-tag h3 {
+  display: inline-block;
+  color: #ff8080;
+  margin-right: 15px;
 }
 
 .summary-container p {
@@ -121,19 +155,8 @@
 
 .user-dp {
   margin-bottom: 10px;
-}
-
-.available-box .fa{
-  padding: 20px 0;
-}
-
-.available-box .fa-thumbs-up {
-  font-size: 7em;
-  color: #ff8080;
-}
-
-.available-box .fa-thumbs-down {
-  font-size: 7em;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 abbr[title] {
@@ -161,4 +184,3 @@ abbr[title] {
   color: #FA5858;
   display: none;
 }
-

@@ -28,7 +28,7 @@ $(document).ready(function() {
 
   // Appends character count span on first keyup. Rewrites inner html afterwards.
   var summaryTextarea = $(".edit-summary textarea"),
-      descriptionTextarea = $(".edit-description textarea");
+  descriptionTextarea = $(".edit-description textarea");
 
   summaryTextarea.on('keyup', function(){
 
@@ -43,8 +43,6 @@ $(document).ready(function() {
     } else {
       $('.summary-count').html(numsLeft + " characters left...");
     }
-
-
     $('.summary-count').show();
   });
 
@@ -71,12 +69,46 @@ $(document).ready(function() {
   });
 
   // 'Toggle' functionality for forms in user show page
-  $('#toggle-skill-form').on('click',function(){$('#skill-form').toggle();});
-  $('#toggle-project-form').on('click',function(){$('#project-form').toggle();});
-  $('#toggle-education-form').on('click',function(){$('#education-form').toggle();});
-  $('#toggle-employment-form').on('click',function(){$('#employment-form').toggle();});
+  $('#toggle-skill-form').on('click',function(){
+    if ($('#new-skill #skill-form').is(":visible")){
+      $(this).html("Add New Skill");
+      $('#new-skill #skill-form').slideUp();
+    }
+    else {
+      $(this).html("Cancel");
+      $('#new-skill #skill-form').slideDown();
+    }});
 
+    $('#toggle-project-form').on('click',function(){
+      if($("#new-project #project-form").is(":visible")){
+        $(this).html("Add New Project");
+        $('#new-project #project-form').slideUp();
+      }
+      else{
+        $(this).html("Cancel");
+        $('#new-project #project-form').slideDown();
+      }
+    });
 
+    $('#toggle-education-form').on('click',function(){
+      if($("#new-education #education-form").is(":visible")){
+        $(this).html("Add New Education History");
+        $('#new-education #education-form').slideUp();
+      }
+      else{
+        $(this).html("Cancel");
+        $('#new-education #education-form').slideDown();
+      }
+    });
 
-
-});
+      $('#toggle-employment-form').on('click',function(){
+        if($("#new-employment #employment-form").is(":visible")){
+          $(this).html("Add New Employment History");
+          $('#new-employment #employment-form').slideUp();
+        }
+        else{
+          $(this).html("Cancel");
+          $('#new-employment #employment-form').slideDown();
+        }
+      });
+    });

@@ -1,22 +1,20 @@
 <div class="container">
 
-  <li class="list-group-item clearfix">
+  <li>
     <%= fa_icon('weixin') %> <%= render 'conversations/participants', conversation: conversation %>
     <% if conversation.is_unread?(current_user) %>
-    <font color='red'> NEW Message!</font>
+    <font color='blue'> NEW Message!</font>
     <%end %>
-    <div class="btn-group-vertical pull-right">
-      <div class="btn-group-vertical pull-right">
-        <% if conversation.is_trashed?(current_user) %>
-        <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
-        <% else %>
-        <%= link_to fa_icon("trash"), conversation_path(conversation), class: 'btn btn-xs btn-default', method: :delete,
-        data: {confirm: 'Are you sure?'} %>
-        <% end %>
-      </div>
-    </div>
-
+    <br>
     <h4> <%= link_to conversation.subject, conversation_path(conversation)%></h4>
+    <div class="btn-group-vertical">
+      <% if conversation.is_trashed?(current_user) %>
+      <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
+      <% else %>
+      <%= link_to fa_icon("trash"), conversation_path(conversation), class: 'btn btn-xs btn-default', method: :delete,
+      data: {confirm: 'Are you sure?'} %>
+      <% end %>
+    </div>
     <p><%= conversation.last_message.body %></p>
     <p><small>(<span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small></p>
   </li>
