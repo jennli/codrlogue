@@ -103,8 +103,27 @@
 
 /****************** USER PROFILE ******************/
 
+.panel-heading h4 {
+  display: inline-block;
+}
+
+.panel-heading .btn {
+  margin-right: 15px;
+}
+
 .profile-container h1.profile-name-header {
   margin: 0;
+  display: inline-block;
+}
+
+.available-tag {
+  margin-left: 20px;
+}
+
+.available-tag h3 {
+  display: inline-block;
+  color: #ff8080;
+  margin-right: 15px;
 }
 
 .summary-container p {
@@ -121,19 +140,8 @@
 
 .user-dp {
   margin-bottom: 10px;
-}
-
-.available-box .fa{
-  padding: 20px 0;
-}
-
-.available-box .fa-thumbs-up {
-  font-size: 7em;
-  color: #ff8080;
-}
-
-.available-box .fa-thumbs-down {
-  font-size: 7em;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 abbr[title] {
