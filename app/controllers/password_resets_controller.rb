@@ -3,7 +3,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    user = User.friendly.find_by(email: params[:email])
     if user
       user.generate_password_reset_token!
       Notifier.password_reset(user).deliver
@@ -15,7 +15,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(password_reset_token: params[:id])
+    @user = User.friendly.find_by(password_reset_token: params[:id])
     if @user
     else
       render file: 'public/404.html', status: :not_found
@@ -23,7 +23,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @user = User.find_by(password_reset_token: params[:id])
+    @user = User.friendly.find_by(password_reset_token: params[:id])
     if @user && @user.update_attributes(user_params)
       @user.update_attribute(:password_reset_token, nil)
       session[:user_id] = @user.id
