@@ -44,14 +44,17 @@ class EducationsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.js { render :education_edit }
+    end
   end
 
   def update
     respond_to do |format|
       if @education.update education_params
-        format.json { render json: @education.to_json }
+        format.js { render :education_update_success }
       else
-        format.json { render json: @education.errors }
+        format.js { render :education_update_failure }
       end
     end
   end

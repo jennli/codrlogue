@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   get 'users/admin/:admin_random_string' => 'users#index', as: :admin
-  get 'users/admin/:admin_random_string/admin_filter/:filter_string' => 'users#index', as: :admin_filter
+  get 'users/admin/:admin_random_string/admin_filter/:admin' => 'users#index', as: :admin_filter
+  get 'users/filter/:filter_string' => 'users#index', as: :user_filter
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do
