@@ -56,6 +56,13 @@
             </span>
             <p><i class="fa fa-envelope"></i>&nbsp; <%= link_to "#{@user.email}", user_contact_path(@user) %></p>
             <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
+            <p id="shortlist-button">
+              <% if session[:shortlist_ids] && session[:shortlist_ids].include?(@user.id.to_s) %>
+                <%= link_to "Remove from Shortlist", users_shortlists_path(id: @user.id), remote: true, method: :delete %>
+              <% else %>
+                <%= link_to "Add to Shortlist", users_shortlists_path(id: @user.id), remote: true, method: :post %>
+              <% end %>
+            </p>
           </div>
           <p><em><%= @user.summary %></em></p>
           <p>
