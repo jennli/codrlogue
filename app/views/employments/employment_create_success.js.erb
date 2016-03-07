@@ -1,5 +1,5 @@
-$('.employments').prepend('<%= j render "employment", employment: @employment %>');
+$('<%= j render "employment", employment: @employment %>').hide().appendTo('.employments').slideDown();
 
 <% @employment = Employment.new %>
 
-$('#employment-form').html('<%= j render "form" %>');
+$('#new_employment').html('<%= j render "form" %>').child().slideUp();
