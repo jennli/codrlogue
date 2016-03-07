@@ -33,12 +33,10 @@ class UsersController < ApplicationController
     if params[:search]
       keyword = params[:search]
       @users = []
-      @users.concat(
-
-      a = User.where("first_name ilike ? last_name ilike ? or summary ilike ? OR description ilike ? ", "%#{keyword}","%#{keyword}","%#{keyword}","%#{keyword}"))
+      a = User.where("first_name ilike ? OR last_name ilike ? OR summary ilike ? OR description ilike ? ", "%#{keyword}%","%#{keyword}%","%#{keyword}%","%#{keyword}%")
       b = User.joins(:skills).where("title ilike ? ", "%#{keyword}%")
       c = User.joins(:employments).where("company_name ilike ?", "%#{keyword}%")
-      d = User.joins(:projects).where("title ilike ? OR description ilike ?","%#{keyword}%","%#{keyword}%")
+      d = User.joins(:projects).where("title ilike ? OR project.description ilike ?","%#{keyword}%","%#{keyword}%")
       @users = (a + b + c + d).uniq
     end
     #
