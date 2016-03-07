@@ -22,10 +22,7 @@
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
 
-
-
-
-$("document").ready(function(){
+$(document).ready(function() {
 
   // Edit Users Pages
 
@@ -46,7 +43,7 @@ $("document").ready(function(){
     } else {
       $('.summary-count').html(numsLeft + " characters left...");
     }
-    
+
 
     $('.summary-count').show();
   });
@@ -73,8 +70,11 @@ $("document").ready(function(){
     $('span.count').fadeOut(1500);
   });
 
-
-
+  // 'Toggle' functionality for forms in user show page
+  $('#toggle-skill-form').on('click',function(){$('#skill-form').toggle();});
+  $('#toggle-project-form').on('click',function(){$('#project-form').toggle();});
+  $('#toggle-education-form').on('click',function(){$('#education-form').toggle();});
+  $('#toggle-employment-form').on('click',function(){$('#employment-form').toggle();});
 
 
 
