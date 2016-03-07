@@ -24,6 +24,7 @@ class EducationsController < ApplicationController
   def create
     @education = Education.new education_params
     @education.user = current_user
+    #@education.school_link = sanitize_url(@education.school_link)
     respond_to do |format|
       if @education.save
         format.js { render :education_create_success }
@@ -74,6 +75,7 @@ class EducationsController < ApplicationController
   end
 
   def education_params
+    params[:education][:school_link] = sanitize_url(params[:education][:school_link])
     params.require(:education).permit(:school_name,:school_link,:grade_year,:level,:field)
   end
 
