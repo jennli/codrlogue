@@ -1,0 +1,5 @@
+$('.companies').prepend('<%= j render "company", company: @company %>');
+
+<% @company = Company.new %>
+
+$('#company-form').html('<%= j render "form" %>');

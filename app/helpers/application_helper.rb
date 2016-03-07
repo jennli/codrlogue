@@ -21,4 +21,8 @@ module ApplicationHelper
   def page_header(text)
     content_for(:page_header) { text.to_s }
   end
+
+  def formatted_date_time(datetime)
+    datetime.strftime("%Y-%B")
+  end
 end
