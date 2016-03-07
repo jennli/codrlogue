@@ -1,7 +1,4 @@
 $('<%= j render "project", project: @project %>').hide().appendTo('.projects').slideDown();
-
 <% @project = Project.new %>
-
-$('#new_project').html('<%= j render "form" %>').child().slideUp();
-
-
+$('#new_project').html('<%= j render "form" %>').children().slideUp();
+$('#toggle-project-form').click();
