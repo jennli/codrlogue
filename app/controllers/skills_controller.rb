@@ -42,14 +42,17 @@ class SkillsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.js { render :skill_edit }
+    end
   end
 
   def update
     respond_to do |format|
       if @skill.update skill_params
-        format.json { render json: @skill.to_json }
+        format.js { render :skill_update_success }
       else
-        format.json { render json: @skill.errors }
+        format.json { render :skill_update_failure }
       end
     end
   end

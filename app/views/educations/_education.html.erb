@@ -22,7 +22,8 @@ field
   
   <div class="col-lg-1"></div>
   
-  <div class="col-lg-2"><% if can? :destroy, education %>
+  <div class="col-lg-2"><% if can? :manage, education %>
+    <%= link_to "Edit", edit_education_path(education), remote: true %>
     <%= link_to "Delete", education_path(education),
                           method: :delete,
                           remote: true,

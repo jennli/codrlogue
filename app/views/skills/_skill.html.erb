@@ -15,7 +15,9 @@
   </div>
   <div class="col-lg-1"></div>
   <div class="col-lg-2">  
-    <% if can? :destroy, skill %>
+    <% if can? :manage, skill %>
+    <%= link_to "Edit", edit_skill_path(skill) , remote: true %>
+
     <%= link_to "Delete", skill_path(skill),
                           method: :delete,
                           remote: true,

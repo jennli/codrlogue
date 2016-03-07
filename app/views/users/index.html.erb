@@ -3,7 +3,7 @@
   <% page_header "All Users" %>
 <div class="row">
   <% @users.each do |u| %>
-  <div class='col-sm-3'>
+  <div class='col-xs-12 col-sm-6 col-md-3'>
     <div class="well">
       <%=image_tag u.image.url(:medium), class: "user-dp center-block img-rounded" %>
       <%= link_to u.full_name, u%>
