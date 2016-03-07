@@ -1,65 +1,98 @@
 <div class="container">
 
-  <h1>Edit User Profile</h1>
-
   <% if @user.errors.full_messages.size > 0 %>
-  <div class="notice">
-    <%= @user.errors.full_messages.join(",") %>
-  </div>
+    <div class="notice alert alert-danger">
+      <ul>
+      <% @user.errors.full_messages.each do |error| %>
+        <li><i class="fa fa-exclamation-triangle"></i> <%= error %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  <div>
-    <%= form_for @user do |f|%>
-    <div class="form-group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class:"form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class:"form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class:"form-control" %>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <%= @user.first_name %>'s Basic Info
     </div>
 
-    <div class="form-group">
-      <%= f.label :summary %>
-      <%= f.text_area :summary, class: "form-control" %>
-    </div>
+    <div class="panel-body">
+        <%= simple_form_for @user do |f|%>
+          <div class="row">
 
-    <div class="form-group">
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "form-control" %>
-    </div>
+            <div class="col-md-4">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <%= f.input :first_name %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.input :last_name %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.input :email %>
+                </div>
+              </div>
+              <%# Seo edit inputs %>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.input :twitter, label: "<i class='fa fa-twitter'></i>".html_safe, placeholder: "https://twitter.com/example" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.input :linkedin, label: "<i class='fa fa-linkedin'></i>".html_safe, placeholder: "https://linkedin.com/in/example" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.input :github, label: "<i class='fa fa-github'></i>".html_safe, placeholder: "https://github.com/example"  %>
+                </div>
+              </div>
+            </div> <%# /col-4- %>
 
-    <div class="form-group">
-      <%= f.label 'Social Media' %>
-      <br>
-      <%= f.label 'Linkedin' %>
-      <%= f.url_field :linkedin %>
-      <%= f.label 'Github' %>
-      <%= f.url_field :github %>
-      <%= f.label 'Twitter' %>
-      <%= f.url_field :twitter %>
-    </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="edit-summary col-xs-12">
+                  <%= f.input :summary %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="edit-description col-xs-12">
+                  <%= f.input :description %>
+                </div>
+              </div>
 
-    <div class="form-group">
-      <%= f.label "Available for recruiting?" %>
-      <%= f.check_box :is_available %>
-    </div>
-    <div class="form-group">
-      <%= f.label "Image" %>
-      <%= f.file_field :image %>
-    </div>
-    <div class="form-group">
-      <%= f.label "Attachment" %>
-      <%= f.file_field :attachment %>
-    </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <%= f.input :image, as: :file %>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <%= f.input :attachment, as: :file %>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <%= f.input :is_available, :as => :boolean %>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <%= f.button :submit %>
+                    <%= link_to "Change password", user_password_path(@user), class:"btn btn-danger btn-sm"%>
+                    <%= link_to "Cancel", user_path(@user), class:"btn btn-default btn-sm"%>
+                  </div>
+                </div>
+              </div>
+            </div> <%# /col-md-8 %>
+          </div>
+        <% end %>
+    </div> <!-- / Panel-body -->
+  </div> <!--/ Panel-->
 
-    <div class="form-group">
-      <%= f.submit class:"btn btn-info btn-sm" %>
-      <%= link_to "Change password", user_password_path(@user), class:"btn btn-danger btn-sm"%>
-      <%= link_to "Cancel", user_path(@user), class:"btn btn-default btn-sm"%>
-    </div>
-    <% end %>
-  </div>
+  
+</div>
+
