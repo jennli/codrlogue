@@ -53,6 +53,9 @@ gem 'rails-jquery-autocomplete'
 # Annotate to add comments about schema
 gem 'annotate'
 
+# Toast message for shortlist
+gem 'toastr-rails'
+
 # Use ActiveModel has_secure_password
 
 # Use Unicorn as the app server
