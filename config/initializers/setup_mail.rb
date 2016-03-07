@@ -1,5 +1,5 @@
 ActionMailer::Base.smtp_settings = {
-  address:              "smtp.sendgrid.net",
+  :address => 'smtp.sendgrid.net',
   port:                 "587",
   enable_starttls_auto: true,
   authentication:       :plain,
