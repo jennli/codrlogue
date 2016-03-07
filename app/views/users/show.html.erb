@@ -3,73 +3,69 @@
   <% if can? :view, @user %>
   <% page_header @user.full_name %>
 
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <% if @user.approved %> 
-          <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info" %>
-          <h4>Basic Info</h4>
-        <% else %>
-          <% if can? :manage, @user %>
-            <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info" %>
-          <% end %>
-          <h4>Pending.. You will be notified when your account is approved</h4>
-        <% end  %> <%# CLOSE 'IF' %>
-      </div>
-
-      <div class="panel-body">
-        <div class="row">
-          <section class="col-lg-3 col-md-12">
-            <%=image_tag @user.image.url(:medium), class: "user-dp center-block img-rounded" %>
-            <div class="row seo-icons center-block">
-              <%# LinkedIn Icon %>
-              <% unless @user.linkedin == nil %>
-                <%= link_to @user.linkedin_link do %>
-                  <i class="col-xs-4 text-center fa fa-linkedin-square fa-3x"></i>
-                <% end %>
-              <% end %>
-              <%# Github Icon %>
-              <% unless @user.github == nil %>
-                <%= link_to @user.github_link do %>
-                  <i class="col-xs-4 text-center fa fa-github-square fa-3x"></i>
-                <% end %>
-              <% end %>
-              <%# Twitter Icon %>
-              <% unless @user.twitter == nil %>
-                <%= link_to @user.twitter_link do %>
-                  <i class="col-xs-4 text-center fa fa-twitter-square fa-3x"></i>
-                <% end %>
-              <% end %>
-            </div>
-          </section>
-          <section class="col-lg-9 col-md-12 summary-container">
-            <div class="row">
-              <h1 class="profile-name-header"><%= @user.full_name %></h1>
-                <span class="available-tag">
-                  <% if @user.is_available%>
-                    <h3>Available</h3> <i class="fa fa-thumbs-up"></i>
-                  <% else %>
-                    <h3>Not available</h3> <i class="fa fa-thumbs-down"></i>
-                  <% end %>
-                </span>
-              <p><i class="fa fa-envelope"></i>&nbsp; <%= link_to "#{@user.email}", user_contact_path(@user) %></p>
-              <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
-              <p id="shortlist-button">
-                <% if session[:shortlist_ids] && session[:shortlist_ids].include?(@user.id.to_s) %>
-                  <%= link_to "Remove from Shortlist", users_shortlists_path(id: @user.id), remote: true, method: :delete %>
-                <% else %>
-                  <%= link_to "Add to Shortlist", users_shortlists_path(id: @user.id), remote: true, method: :post %>
-                <% end %>
-              </p>
-            </div>
-            <p><em><%= @user.summary %></em></p>
-            <p>
-              <%= markdown(@user.description) %>
-            </p>
-          </section>
-        </div>
-      </div> <!-- /panel-body-->
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <% if @user.approved %>
+      <%= link_to "Email User", user_contact_path(@user), class: "btn btn-primary" %>
+      <h4>Basic Info</h4>
+      <% else %>
+      <% if can? :manage, @user %>
+      <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info" %>
+      <% end %>
+      <h4>Pending.. You will be notified when your account is approved</h4>
+      <% end  %> <%# CLOSE 'IF' %>
     </div>
 
-    <%= render "profile" %>
-    <% end %>
+    <div class="panel-body">
+      <div class="row">
+        <section class="col-lg-3 col-md-12">
+          <%=image_tag @user.image.url(:medium), class: "user-dp center-block img-rounded" %>
+          <div class="row seo-icons center-block">
+            <%# LinkedIn Icon %>
+            <% unless @user.linkedin == nil %>
+            <%= link_to @user.linkedin_link do %>
+            <i class="col-xs-4 text-center fa fa-linkedin-square fa-3x"></i>
+            <% end %>
+            <% end %>
+            <%# Github Icon %>
+            <% unless @user.github == nil %>
+            <%= link_to @user.github_link do %>
+            <i class="col-xs-4 text-center fa fa-github-square fa-3x"></i>
+            <% end %>
+            <% end %>
+            <%# Twitter Icon %>
+            <% unless @user.twitter == nil %>
+            <%= link_to @user.twitter_link do %>
+            <i class="col-xs-4 text-center fa fa-twitter-square fa-3x"></i>
+            <% end %>
+            <% end %>
+          </div>
+        </section>
+        <section class="col-lg-9 col-md-12 summary-container">
+          <div class="row">
+            <h1 class="profile-name-header"><%= @user.full_name %></h1>
+            <% if can? :manage, @user %>
+            <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-danger btn-xs" %>
+            <% end %>
+            <span class="available-tag">
+              <% if @user.is_available%>
+              <h3>Available</h3> <i class="fa fa-thumbs-up"></i>
+              <% else %>
+              <h3>Not available</h3> <i class="fa fa-thumbs-down"></i>
+              <% end %>
+            </span>
+            <p><i class="fa fa-envelope"></i>&nbsp; <%= link_to "#{@user.email}", user_contact_path(@user) %></p>
+            <p><i class="fa fa-file"></i>&nbsp; <%=link_to 'Resume', @user.attachment.url %></p>
+          </div>
+          <p><em><%= @user.summary %></em></p>
+          <p>
+            <%= markdown(@user.description) %>
+          </p>
+        </section>
+      </div>
+    </div> <!-- /panel-body-->
+  </div>
+
+  <%= render "profile" %>
+  <% end %>
 </div>

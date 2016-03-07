@@ -3,7 +3,7 @@
   <li>
     <%= fa_icon('weixin') %> <%= render 'conversations/participants', conversation: conversation %>
     <% if conversation.is_unread?(current_user) %>
-    <font color='red'> NEW Message!</font>
+    <font color='blue'> NEW Message!</font>
     <%end %>
     <br>
     <h4> <%= link_to conversation.subject, conversation_path(conversation)%></h4>

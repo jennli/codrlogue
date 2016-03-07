@@ -1,4 +1,7 @@
-<div class="container">
+
+<div class="container-full-bg">
+  <div id='bg_image' style="background-image:url('http://i.imgur.com/bPqCZRP.jpg');">
+
   <div class="row landing-carousel-quotes">
     <div class="col-md-12" data-wow-delay="0.2s">
       <div class="carousel slide" data-ride="carousel" id="quote-carousel">
@@ -61,6 +64,15 @@
   </div>
 </div>
 <hr>
-<div style="text-align:center;">
-<%= link_to "Available Users", user_filter_path(User::AVAILABLE), class: "landing-button" %> <%= link_to "All Users", users_path, class: "landing-button" %>
+<div style="text-align: right; padding-right:1%;">
+<%= link_to 'Available Students <span class="glyphicon glyphicon-list-alt"></span>'.html_safe, user_filter_path(User::AVAILABLE), class: "btn btn-lg btn-danger" %>
+<%= link_to 'Browse All Students <span class="glyphicon glyphicon-list"></span>'.html_safe, users_path, class: "btn btn-lg btn-danger" %>
+
+  <div style="text-align: left; padding-left:1%; margin-top: 0%;">
+    <a href="https://www.facebook.com/CodeCoreBootcamp/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+    <a href="https://twitter.com/CodeCoreYVR?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+    <a href="https://plus.google.com/+CodecoreCaBootcamp/about"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+    <a href="https://codecore.ca/program_applications/new"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+  </div>
+
 </div>
