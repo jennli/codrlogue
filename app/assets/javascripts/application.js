@@ -21,3 +21,11 @@
 //= require jquery-ui
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
+
+$(document).ready(function() {
+  $('#toggle-skill-form').on('click',function(){$('#skill-form').toggle();});
+  $('#toggle-project-form').on('click',function(){$('#project-form').toggle();});
+  $('#toggle-education-form').on('click',function(){$('#education-form').toggle();});
+  $('#toggle-employment-form').on('click',function(){$('#employment-form').toggle();});
+
+});
