@@ -3,7 +3,7 @@
   <% page_header "Account List" %>
 
   <div style="text-align: center;">
-    <%= link_to "Admins users", admin_path(get_admin_random_string, User::ADMIN), method: :get %> | <%= link_to "All Accounts", admin_path(get_admin_random_string), method: :get %>
+    <%= link_to "Admins users", admin_filter_path(get_admin_random_string, User::ADMIN), method: :get %> | <%= link_to "All Accounts", admin_path(get_admin_random_string), method: :get %>
     <hr>
   </div>
   <% @users.each do |u| %>

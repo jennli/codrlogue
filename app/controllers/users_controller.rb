@@ -100,7 +100,7 @@ class UsersController < ApplicationController
     end
     if @user.update user_params
       if user_params.has_key?(:approved) || user_params.has_key?(:admin)
-        flash[:notice] = "Update success from Administrator"
+        flash[:notice] = "Status changed to #{user_params[:approved]} for #{@user.full_name} by dministrator"
         @users = User.all.order('created_at DESC').page(params[:page])
         redirect_to admin_path(get_admin_random_string)
       else
