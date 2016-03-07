@@ -25,13 +25,13 @@ class User < ActiveRecord::Base
   has_many :educations, dependent: :destroy
   has_many :projects, dependent: :destroy
 
-  has_many :companies, through: :employments
+  # has_many :companies, through: :employments
 
   has_secure_password
 
   mount_uploader :image, ImageUploader
   mount_uploader :attachment, AttachmentUploader
-  
+
   # validates_format_of :linkedin, :with => URI::regexp(%w(http https))
   # validates_format_of :github, :with => URI::regexp(%w(http https))
   # validates_format_of :twitter, :with => URI::regexp(%w(http https))
@@ -52,11 +52,14 @@ class User < ActiveRecord::Base
   end
 
   # pagination per page limit
-  self.per_page = 10
+  self.per_page = 8
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
+  def generate_password_reset_token!
+    update_attribute(:password_reset_token, SecureRandom.urlsafe_base64(48))
+  end
 
 end

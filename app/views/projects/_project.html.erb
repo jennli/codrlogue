@@ -1,0 +1,24 @@
+<%# :title,:description,:project_link,:github_link %>
+
+<div id="<%= dom_id(project) %>" class="container-fluid">
+  <div class="col-lg-1 grey">Title: </div>
+  <div class="col-lg-1"><%= project.title %></div>
+
+  <div class="col-lg-1 grey">Description: </div>
+  <div class="col-lg-1"><%= project.description %></div>
+  
+  <div class="col-lg-1"><%= link_to "Project Link", project.project_link%></div>
+
+  <div class="col-lg-1"><%= link_to (fa_icon "github")+"GitHub Link", project.github_link %></div>
+
+  
+  <div class="col-lg-1"></div>
+  
+  <div class="col-lg-2"><% if can? :destroy, project %>
+    <%= link_to "Delete", project_path(project),
+                          method: :delete,
+                          remote: true,
+                          data: {confirm: "Are you sure?"} %>
+    <% end %></div>
+
+</div>

@@ -14,7 +14,8 @@
 #
 
 class EducationsController < ApplicationController
-before_action :find_education, only: [:show, :edit, :update, :destroy]
+  before_action :find_education, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
   def new
     @education = Education.new
@@ -71,5 +72,11 @@ before_action :find_education, only: [:show, :edit, :update, :destroy]
 
   def education_params
     params.require(:education).permit(:school_name,:school_link,:grade_year,:level,:field)
+  end
+
+  def authorize_user
+    unless can? :manage, @education
+      redirect_to root_path , alert: "Access Denied"
+    end
   end
 end

@@ -1,0 +1,5 @@
+$('.employments').prepend('<%= j render "employment", employment: @employment %>');
+
+<% @employment = Employment.new %>
+
+$('#employment-form').html('<%= j render "form" %>');

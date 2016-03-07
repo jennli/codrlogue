@@ -1,0 +1,32 @@
+<%# 
+school_name
+school_link
+grade_year
+level
+field
+ %>
+
+<div id="<%= dom_id(education) %>" class="container-fluid">
+  <div class="col-lg-1 grey">Level: </div>
+  <div class="col-lg-1"><%= education.level %></div>
+
+  <div class="col-lg-1 grey">Field: </div>
+  <div class="col-lg-1"><%= education.field %></div>
+  
+  <div class="col-lg-1 grey">Year: </div>
+  <div class="col-lg-1"><%= education.grade_year.strftime("%Y-%m") %></div>
+
+  <div class="col-lg-1 grey">School: </div>
+  <div class="col-lg-1"><%= link_to education.school_name, "#{education.school_link}" %></div>
+
+  
+  <div class="col-lg-1"></div>
+  
+  <div class="col-lg-2"><% if can? :destroy, education %>
+    <%= link_to "Delete", education_path(education),
+                          method: :delete,
+                          remote: true,
+                          data: {confirm: "Are you sure?"} %>
+    <% end %></div>
+
+</div>

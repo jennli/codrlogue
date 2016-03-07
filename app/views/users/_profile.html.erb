@@ -6,22 +6,77 @@
     </div>
     <div class="panel-body">
       <div class="skills">
-        <% @user.skills.each do |s| %>
+        <% @user.skills.each do |skill| %>
           <%# becareful of the folder %>
-          <%= render '/skills/skill', skill: s %>
+          <%= render '/skills/skill', skill: skill %>
         <% end %>
       </div>
-      <%# if can? :manage, @user %>
+      <% if can? :manage, @user %>
         <div id="skill-form">
           <%# byebug %>
           <%= render 'skills/form' %>
         </div>
-      <%# end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4>Projects</h4>
+    </div>
+    <div class="panel-body">
+      <div class="projects">
+        <% @user.projects.each do |project| %>
+          <%# becareful of the folder %>
+          <%= render '/projects/project', project: project %>
+        <% end %>
+      </div>
+      <% if can? :manage, @user %>
+        <div id="project-form">
+          <%# byebug %>
+          <%= render 'projects/form' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4>Educations</h4>
+    </div>
+    <div class="panel-body">
+      <div class="educations">
+        <% @user.educations.each do |education| %>
+          <%# becareful of the folder %>
+          <%= render '/educations/education', education: education %>
+        <% end %>
+      </div>
+      <% if can? :manage, @user %>
+        <div id="education-form">
+          <%# byebug %>
+          <%= render 'educations/form' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4>Employment</h4>
+    </div>
+    <div class="panel-body">
+      <div class="employments">
+        <% @user.employments.each do |employ| %>
+          <%# be careful of the folder %>
+          <%= render '/employments/employment', employment: employ %>
+        <% end %>
+      </div>
+      <% if can? :manage, @user %>
+        <div id="employment-form">
+          <%# byebug %>
+          <%= render 'employments/form' %>
+        </div>
+      <% end %>
 
 
     </div>
   </div>
 </div>
-
-
-
