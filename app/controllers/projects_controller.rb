@@ -43,14 +43,17 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.js { render :project_edit }
+    end
   end
 
   def update
     respond_to do |format|
       if @project.update project_params
-        format.json { render json: @project.to_json }
+        format.js { render :project_update_success }
       else
-        format.json { render json: @project.errors }
+        format.js { render :project_update_failure }
       end
     end
   end
