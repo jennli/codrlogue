@@ -54,8 +54,8 @@ class UsersController < ApplicationController
           @users = User.where('admin = true').order(created_at: :asc).page(params[:page])
         else
           @users = User.order('approved nulls first').order(created_at: :asc).page(params[:page])
-          render :admin
         end
+        render :admin
       else
         redirect_to root_path, alert:'access denied'
       end
