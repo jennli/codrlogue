@@ -1,7 +1,12 @@
 <div id="education-form">
   <%= simple_form_for @education, remote: true do |f| %>
 
-    <%= f.input :school_name, label: false, placeholder: "School Name" %>
+    <%#= f.input :school_name, label: false, placeholder: "School Name" %>
+    <%= f.input :school_name,
+      url: autocomplete_education_school_name_educations_path,
+      as: :autocomplete,
+      label: false,
+      placeholder: "School Name" %>
     <%= f.input :level, as: :select, collection: Education::VALID_EDUCATION_LEVELS, label: false, include_blank: "Select Level" %>
     <%= f.input :field, label: false, placeholder: "Field of Study" %>
     <%= f.input :school_link, label: false, placeholder: "Link to the School", wrapper_html: { class: 'wide' } %>
