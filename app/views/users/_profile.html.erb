@@ -48,10 +48,7 @@
         <% end %>
       </div>
       <% if can? :manage, @user %>
-        <div id="education-form">
-          <%# byebug %>
           <%= render 'educations/form' %>
-        </div>
       <% end %>
     </div>
   </div>
