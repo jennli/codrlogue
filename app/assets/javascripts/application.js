@@ -28,7 +28,7 @@ $(document).ready(function() {
 
   // Appends character count span on first keyup. Rewrites inner html afterwards.
   var summaryTextarea = $(".edit-summary textarea"),
-      descriptionTextarea = $(".edit-description textarea");
+  descriptionTextarea = $(".edit-description textarea");
 
   summaryTextarea.on('keyup', function(){
 
@@ -71,12 +71,38 @@ $(document).ready(function() {
   });
 
   // 'Toggle' functionality for forms in user show page
-  $('#toggle-skill-form').on('click',function(){$('#new-skill #skill-form').slideDown();});
-  $('#toggle-project-form').on('click',function(){$('#new-project #project-form').slideDown();});
-  $('#toggle-education-form').on('click',function(){$('#new-education #education-form').slideDown();});
-  $('#toggle-employment-form').on('click',function(){$('#new-employment #employment-form').slideDown();});
+  $('#toggle-skill-form').on('click',function(){
+    if ($('#skill-form').is(":visible")){
+      $('#new-skill #skill-form').slideUp();
+    }
+    else {
+      $('#new-skill #skill-form').slideDown();
+    }});
 
+    $('#toggle-project-form').on('click',function(){
+      if($("#project-form").is(":visible")){
+        $('#new-project #project-form').slideUp();
+      }
+      else{
+        $('#new-project #project-form').slideDown();
+      }
+    });
 
+    $('#toggle-education-form').on('click',function(){
+      if($("#education-form").is(":visible")){
+        $('#new-education #education-form').slideUp();
+      }
+      else{
+        $('#new-education #education-form').slideDown();
+      }
+    });
 
-
-});
+      $('#toggle-employment-form').on('click',function(){
+        if($("#employment-form").is(":visible")){
+          $('#new-employment #employment-form').slideUp();
+        }
+        else{
+          $('#new-employment #employment-form').slideDown();
+        }
+      });
+    });
