@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/home' => 'home#landing'
+
   resources :employments do
     get :autocomplete_employment_company_name, :on => :collection
   end
