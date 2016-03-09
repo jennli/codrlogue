@@ -145,6 +145,7 @@ class UsersController < ApplicationController
       :github,
       :twitter,
       :image,
+      :remove_image,
       :attachment)
   end
 

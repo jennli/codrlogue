@@ -12,7 +12,9 @@
 !/log/.keep
 /tmp
 /config/initializers/app_keys.rb
+/config/initializers/app_key.rb
 .DS_Store
+.gitignore
 app/.DS_Store
 public/uploads
 

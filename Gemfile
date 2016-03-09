@@ -50,6 +50,7 @@ gem 'chosen-rails'
 gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
 gem 'will_paginate-bootstrap'
+gem 'fog'
 
 # Annotate to add comments about schema
 gem 'annotate'
