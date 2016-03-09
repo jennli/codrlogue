@@ -9,6 +9,10 @@ a:hover {
   color: #d54944;
 }
 
+span.ui-helper-hidden-accessible {
+  display: none;
+}
+
 /****************** NAV BAR ******************/
 
 .navbar {
@@ -22,6 +26,33 @@ ul.nav a:hover {
 ul.nav a {
   color: #ff8787 !important;
 }
+
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+
+/****************** FRONT PAGE ******************/
+
+.front-page-btn {
+  margin-top: 20px;
+}
+
+.front-page-users {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+
+.seo-footer {
+  padding-top: 30px;
+}
+
+.seo-footer a {
+  margin: 0 10px;
+}
+
 
 /* Carousel */
 
@@ -95,8 +126,18 @@ ul.nav a {
   float: right;
 }
 
+.employments p {
+  margin-left: 4.8px;
+}
+
 
 /****************** MEDIA QUERY ******************/
+
+  @media (max-width: 1200px) {
+    .summary-container {
+      text-align: center;
+    }
+  }
 
   @media (max-width: 544px) {
     .edit-description textarea {
@@ -184,3 +225,6 @@ abbr[title] {
   color: #FA5858;
   display: none;
 }
+
+
+

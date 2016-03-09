@@ -1,0 +1,6 @@
+toastr.options = {
+  "closeButton": true,
+  "positionClass": "toast-bottom-right"
+}
+toastr.success('Removed from shortlist successfully!');
+$('#shortlist-button').html("<%= j link_to "Add to Shortlist", users_shortlists_path(id: @user.id), remote: true, method: :post %>");

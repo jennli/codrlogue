@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :companies
   resources :projects
   resources :categories
-  resources :educations
+  resources :educations do
+    get :autocomplete_education_school_name, :on => :collection
+  end
   resources :skills
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users
@@ -35,6 +37,11 @@ Rails.application.routes.draw do
   get "users/:id/password" => "users#edit_password", as: :user_password
   patch "users/:id/password" => "users#update_password"
   resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
+
+
+  resources :users_shortlists, only: [:create, :index] do
     delete :destroy, on: :collection
   end
 
